@@ -1,0 +1,108 @@
+@import "../scss/variables";
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    border: none;
+    padding: 0;
+    outline: none !important;
+}
+
+body, html {
+   height: 100%;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    color: $font-color;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    outline: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &::-webkit-input-placeholder {
+        color: $font-color;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+    }
+
+    &::-moz-placeholder {
+        color: $font-color;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+    }
+
+    &:-moz-placeholder {
+        color: $font-color;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+    }
+
+    &:-ms-input-placeholder {
+        color: $font-color;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+    }
+
+    &:focus::-webkit-input-placeholder {
+        color: $font-color;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    &:focus::-moz-placeholder {
+        color: $font-color;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    &:focus:-moz-placeholder {
+        color: $font-color;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    &:focus:-ms-input-placeholder {
+        color: $font-color;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+}
+
+// Удаление иконки очистки поля в IE
+input[type="text"]::-ms-clear {
+    display: none;
+}
+
+// Удаление иконки отображения пароля в IE
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+.btn {
+
+    &:hover {
+        
+    }
+
+    &.inactive {
+
+    }
+}

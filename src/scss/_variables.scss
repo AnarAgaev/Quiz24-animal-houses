@@ -1,0 +1,17 @@
+// Animation functions
+$func-primary                 : cubic-bezier(0.075, 0.82, 0.165, 1);
+$func-animation               : all .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+// Colors
+$font-color: #2e2e2e;
+$color-border: #63bae8;
+$color-background: #fff;
+$color-accent: #7bbb4c;
+$color-placeholder: #d3d3d3;
+
+// Media quires
+$sm : 576px;
+$md : 768px;
+$lg : 992px;
+$xl : 1200px;
+

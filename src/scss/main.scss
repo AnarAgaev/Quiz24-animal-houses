@@ -1,0 +1,7 @@
+// Include style components
+@import 'variables';
+@import 'fonts';
+@import 'default-tempate';
+
+// Include components styles
+@import "../pug/pages/index/index.scss";
