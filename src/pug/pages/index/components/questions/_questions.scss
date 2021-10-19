@@ -1,0 +1,353 @@
+@import "../../../../../scss/variables";
+
+.questions-list {
+    position: relative;
+    padding-top: 26px;
+    padding-bottom: 25px;
+}
+
+.question {
+    &.active {
+        .question__title {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .question__content {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: .2s;
+        }
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        padding: 0 25px;
+        text-align: center;
+        transform: translateY(7px);
+        opacity: 0;
+        transition: all .3s ease-out;
+    }
+
+    &__content {
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        transform: translateY(7px);
+        opacity: 0;
+        transition: all .3s ease-out;
+    }
+
+    &__pic-card {
+        display: block;
+        position: relative;
+        width: 140px;
+        height: 165px;
+        margin: 0 4px 8px;
+
+        .img {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 120px;
+            border: 3px solid transparent;
+            background-size: calc(100% + 6px);
+            background-repeat: no-repeat;
+            background-position-x: -3px;
+            background-position-y: -3px;
+            transition: border-color .2s linear;
+        }
+
+        .value {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 45px;
+            padding-left: 45px;
+            background-color: $color-font-primary;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 17px;
+            color: $color-back-dark;
+            transition: background-color .3s linear;
+        }
+
+        .checker {
+            &::before,
+            &::after {
+                left: 10px;
+            }
+        }
+
+        .zoom {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: 1;
+                top: 5px;
+                left: 5px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: $color-font-primary url("/img/icon-zoom.svg") center no-repeat;
+                background-size: 50%;
+            }
+        }
+    }
+
+    &__radio-card {
+        display: block;
+        position: relative;
+        width: 100%;
+        margin-bottom: 10px;
+
+        .value {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 40px;
+            background-color: $color-font-primary;
+            padding-left: 65px;
+            padding-right: 10%;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 15px;
+            color: $color-back-dark;
+            transition: background-color .3s linear;
+        }
+
+        .checker {
+            &::before,
+            &::after {
+                left: 20px;
+            }
+        }
+
+        .toggle {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url("/img/icon-arr-down.svg") center no-repeat;
+                transform: scale(1, 1);
+                transition: all 0.2s;
+            }
+        }
+
+        .comment {
+            display: block;
+            width: 100%;
+            overflow-y: hidden;
+            max-height: 0;
+            height: auto;
+            background-color: $color-font-primary;
+            font-weight: 300;
+            font-size: 10px;
+            line-height: 12px;
+            color: $color-font-secondary;
+            transition: all .3s linear;
+
+            span {
+                display: block;
+                padding: 0 27px 15px 65px;
+            }
+        }
+
+
+        &.open-comment {
+            .toggle::before {
+                transform: scale(1, -1);
+            }
+
+            .comment {
+                max-height: 100px;
+                overflow-y: initial;
+            }
+        }
+    }
+
+    &__banner {
+        margin-top: 15px;
+    }
+
+    &__ticker {
+        position: relative;
+        width: 100%;
+        height: 25px;
+        background: #dcdcdc;
+
+        &-wrap {
+            position: absolute;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 1500px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            animation: ticker 15s linear 0s infinite normal forwards;
+        }
+
+        li {
+            display: block;
+            margin: 0 68px;
+            white-space: nowrap;
+        }
+    }
+
+    &__image {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 61.25%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &::before,
+        &::after {
+            display: block;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 2.1874vw 3.125vw;
+            font-weight: 500;
+            font-size: 3.125vw;
+            line-height: 12px;
+            white-space: nowrap;
+            color: $color-font-secondary;
+        }
+
+        &::before {
+            content: "Система начала подбор";
+            top: 0;
+            background-color: rgba(198, 181, 92, 0.85);
+            border-radius: 0 0 10px 10px;
+        }
+
+        &::after {
+            content: "Продолжайте отвечать на вопросы";
+            bottom: 0;
+            background-color: rgba(61, 61, 61, 0.85);
+            border-radius: 10px 10px 0 0;
+        }
+
+    }
+
+    &__back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 244px;
+        height: 40px;
+        margin: 25px auto 0;
+        background: $color-accent;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 56px;
+            height: 10px;
+            margin-left: -20px;
+            background: url("/img/arr-back.svg") center no-repeat;
+        }
+
+        &::after {
+            content: "Назад";
+            display: block;
+            position: relative;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 17px;
+            color: $color-font-secondary;
+            margin-left: 10px;
+        }
+    }
+}
+
+@keyframes ticker {
+    0% { left: 0; }
+    100% { left: -1471px; }
+}
+
+#apartmentRenovation {
+    .value {
+        padding-left: 40px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .checker:after,
+    .checker:before {
+        left: 10px;
+    }
+}
+
+.checker {
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 100%;
+        transition: opacity .2s linear;
+    }
+
+    &::before {
+        background: url("/img/check-passive.svg") center no-repeat;
+    }
+
+    &::after {
+        background: url("/img/check-active.svg") center no-repeat;
+        opacity: 0;
+    }
+}
+
+input[type="radio"]:checked ~ .checker::after {
+    opacity: 1;
+}
+input[type="radio"]:checked ~ .img {
+    border-color: $color-accent;
+}
+input[type="radio"]:checked ~ .value {
+    background-color: $color-accent;
+}
+input[type="radio"]:checked ~ .comment {
+    background-color: $color-accent;
+}
+

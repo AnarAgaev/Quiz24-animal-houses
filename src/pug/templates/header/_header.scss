@@ -1,1 +1,45 @@
 @import "../../../scss/variables";
+
+.header {
+    position: relative;
+    margin-bottom: 25px;
+
+    .container:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 23px;
+    }
+
+    &__actions {
+        margin-top: 21px;
+        margin-right: 4px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &__link-phone {
+        margin-right: 17px;
+    }
+
+    &__title {
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 123%;
+        text-align: center;
+    }
+
+    &__sumtitle {
+        font-size: 12px;
+        line-height: 15px;
+        font-weight: normal;
+        text-align: center;
+        margin-top: 6px;
+    }
+
+    .modal-header-toggle {
+        transform: scale(-1, 1);
+        margin-top: 5px;
+    }
+}

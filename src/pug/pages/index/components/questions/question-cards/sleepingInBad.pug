@@ -1,0 +1,36 @@
+.question.hidden#sleepingInBad
+    .question__title Сталкиваетесь ли вы с проблемой, что не можете отучить питомца спать в вашей кровати?
+
+    .question__content
+        .container
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="sleeping-in-place"
+                    value="Да. И он очень недоволен, когда его выгоняем"
+                    data-next-card-id="#apartmentRenovationType"
+                    data-next-progress-position="5"
+                    data-next-banner-img="")
+                span.value.checker Да. И он очень недоволен, когда его выгоняем
+
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="sleeping-in-place"
+                    value="Нет. Он спит на своем месте"
+                    data-next-card-id="#apartmentRenovationType"
+                    data-next-progress-position="5"
+                    data-next-banner-img="")
+                span.value.checker Нет. Он спит на своем месте
+
+    .question__banner
+        .question__ticker
+            ul.question__ticker-wrap
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+        .question__image
+
+    button.question__back(data-prev-card-id="" data-prev-progress-position="")

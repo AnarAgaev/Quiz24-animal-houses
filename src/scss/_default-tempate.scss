@@ -10,14 +10,38 @@
 }
 
 body, html {
-   height: 100%;
+    min-height: 100vh;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     font-style: normal;
-    color: $font-color;
+    color: $color-font-primary;
+}
+
+.header,
+.footer {
+    flex: none;
+}
+
+.main {
+    flex: 1 0 auto;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    margin: 0 auto;
 }
 
 ul, li {
@@ -26,7 +50,13 @@ ul, li {
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background: none;
     margin: 0;
     padding: 0;
 }
@@ -38,49 +68,49 @@ input {
     white-space: nowrap;
 
     &::-webkit-input-placeholder {
-        color: $font-color;
+        color: $color-font-primary;
         opacity: 1;
         transition: opacity 0.2s ease;
     }
 
     &::-moz-placeholder {
-        color: $font-color;
+        color: $color-font-primary;
         opacity: 1;
         transition: opacity 0.2s ease;
     }
 
     &:-moz-placeholder {
-        color: $font-color;
+        color: $color-font-primary;
         opacity: 1;
         transition: opacity 0.2s ease;
     }
 
     &:-ms-input-placeholder {
-        color: $font-color;
+        color: $color-font-primary;
         opacity: 1;
         transition: opacity 0.2s ease;
     }
 
     &:focus::-webkit-input-placeholder {
-        color: $font-color;
+        color: $color-font-primary;
         opacity: 0;
         transition: opacity 0.2s ease;
     }
 
     &:focus::-moz-placeholder {
-        color: $font-color;
+        color: $color-font-primary;
         opacity: 0;
         transition: opacity 0.2s ease;
     }
 
     &:focus:-moz-placeholder {
-        color: $font-color;
+        color: $color-font-primary;
         opacity: 0;
         transition: opacity 0.2s ease;
     }
 
     &:focus:-ms-input-placeholder {
-        color: $font-color;
+        color: $color-font-primary;
         opacity: 0;
         transition: opacity 0.2s ease;
     }
@@ -105,4 +135,41 @@ input[type="password"]::-ms-reveal {
     &.inactive {
 
     }
+}
+
+.back-line {
+    position: fixed;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: $color-back-line;
+    z-index: 0;
+
+    &_one { left: 15px; }
+    &_two { left: 38px; }
+    &_three { right: 64px; }
+    &_four { right: 15px; }
+}
+
+.logo {
+    width: 74px;
+    height: 48px;
+    margin-top: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.unvisible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }

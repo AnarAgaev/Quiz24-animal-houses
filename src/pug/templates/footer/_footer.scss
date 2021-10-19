@@ -1,1 +1,35 @@
 @import "../../../scss/variables";
+
+
+.footer {
+    padding: 20px 0;
+    background: #dcdcdc;
+    position: relative;
+
+    a {
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 14px;
+        color: #acacac;
+        text-decoration: none;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__privacy {
+        margin-bottom: 5px;
+    }
+    
+    &__creator{
+        text-align: right;
+    }
+}

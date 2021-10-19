@@ -1,0 +1,73 @@
+@import "../../../../../scss/variables";
+
+.progress-bar {
+    max-width: 500px;
+    margin: 0 auto;
+
+    &__wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background-color: #c4c4c4;
+        border-radius: 999px;
+    }
+
+    &__step {
+        position: relative;
+        height: 2px;
+        width: 16.66666666666667%;
+
+        &.active {
+            &::before {
+                width: 100%;
+            }
+
+            .progress-bar__point::after {
+                opacity: 1;
+            }
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $color-font-primary;
+            border-radius: 999px;
+            transition: width .3s ease-out;
+        }
+    }
+
+    &__point {
+        position: absolute;
+        width: 15px;
+        height: 14px;
+        top: 50%;
+        right: 0;
+        transform: translate(50%, -50%);
+        background: white url("/img/prog-innactive.png") center no-repeat;
+        background-size: cover;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: url("/img/prog-active.png") center no-repeat;
+            background-size: cover;
+            opacity: 0;
+            transition: opacity .3s linear;
+        }
+
+    }
+}

@@ -1,0 +1,51 @@
+@import "../../../../../scss/variables";
+
+.banner {
+    border-top: 1px solid $color-back-line;
+    border-bottom: 1px solid $color-back-line;
+    height: 192px;
+    position: relative;
+
+    .container {
+        height: 100%;
+    }
+
+    &__pic {
+        display: block;
+        position: absolute;
+        width: calc(100% - 15px);
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: url("/img/banner-back.jpg") top right no-repeat;
+        background-size: auto 101%;
+        z-index: 0;
+    }
+
+    &__list {
+        position: relative;
+        top: 75px;
+
+        li {
+            display: block;
+            position: relative;
+            padding-left: 9px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 12px;
+            width: 27%;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                left: 0;
+                top: 4px;
+                background-color: #3D3D3D;
+            }
+        }
+    }
+}

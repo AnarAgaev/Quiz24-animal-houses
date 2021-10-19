@@ -1,0 +1,90 @@
+@import "../../../../../scss/variables";
+
+.loader {
+    margin-top: 40px;
+
+    &__progress {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__txt {
+        display: block;
+        position: relative;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: -0.02em;
+        margin-top: 20px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all .3s;
+        transition-delay: .2s;
+
+        &.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+.progress {
+    position: relative;
+    width: 64px;
+    height: 64px;
+
+    .value {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        font-weight: bold;
+        text-align: center;
+        font-size: 14px;
+        line-height: 20px;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: $color-back url("/img/icon-check.svg") center no-repeat;
+            transition: all .1s linear;
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        &.checked::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .bar {
+        fill: none;
+        stroke-width: 8px;
+        stroke: $color-accent;
+        stroke-linecap: round;
+        stroke-dasharray: 169.56;
+        stroke-dashoffset: 169.56;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+
+        &.animation {
+            animation: progress-bar 4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+    }
+}
+
+@keyframes progress-bar {
+    from { stroke-dashoffset: 169.56; }
+    to { stroke-dashoffset: 0; }
+}

@@ -1,0 +1,34 @@
+.question.hidden#apartmentRenovationType
+    .question__title Какой ремонт у вас дома ?
+
+    .question__content
+        .container
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="sleeping-place"
+                    value="Дизайнерский ремонт"
+                    data-next-card-id="#apartmentRenovationStyle"
+                    data-next-progress-position="6")
+                span.value.checker Дизайнерский ремонт
+
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="sleeping-place"
+                    value="Обычный ремонт"
+                    data-next-card-id="#loader"
+                    data-next-progress-position="6")
+                span.value.checker Обычный ремонт
+
+    .question__banner
+        .question__ticker
+            ul.question__ticker-wrap
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+        .question__image(style="background-image: url(/img/catQuestions-bnr5.jpg);")
+
+    button.question__back(data-prev-card-id="" data-prev-progress-position="")

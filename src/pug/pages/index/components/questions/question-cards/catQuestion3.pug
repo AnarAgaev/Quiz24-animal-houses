@@ -1,0 +1,36 @@
+.question.hidden#catQuestion3
+    .question__title У вас игривый питомец ?
+
+    .question__content
+        .container
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="player"
+                    value="Да. Прыгает по мебели и царапает стены"
+                    data-next-card-id="#sleepingInBad"
+                    data-next-progress-position="4"
+                    data-next-banner-img="slippingInBad-cat.jpg")
+                span.value.checker Да. Прыгает по мебели и царапает стены
+
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="player"
+                    value="Нет. Любит вальяжно развалиться"
+                    data-next-card-id="#sleepingInBad"
+                    data-next-progress-position="4"
+                    data-next-banner-img="slippingInBad-cat.jpg")
+                span.value.checker Нет. Любит вальяжно развалиться
+
+    .question__banner
+        .question__ticker
+            ul.question__ticker-wrap
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+        .question__image
+
+    button.question__back(data-prev-card-id="" data-prev-progress-position="")

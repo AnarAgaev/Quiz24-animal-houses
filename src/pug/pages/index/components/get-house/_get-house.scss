@@ -1,0 +1,97 @@
+@import "../../../../../scss/variables";
+
+.get-house {
+    position: relative;
+    padding-top: 25px;
+    margin-bottom: 33px;
+
+    &__title {
+        font-family: 'Playfair Display', serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: center;
+        width: 90%;
+        margin: 0 auto 20px;
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 244px;
+        height: 40px;
+        background: $color-accent;
+        margin: 0 auto;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        color: $color-font-secondary;
+        text-transform: uppercase;
+    }
+
+    &__content {
+        position: relative;
+        margin-bottom: 22px;
+    }
+
+    &__cap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 140px;
+        background: #ebebeb;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 6px;
+        padding: 7px 0;
+        margin-top: 39px;
+
+        &::before, &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 24px;
+            top: -20px;
+            background-color: $color-back-line;
+        }
+
+        &::before, &::after {
+            width: 3px;
+            height: 14px;
+            left: 24px;
+            top: -20px;
+        }
+
+        &::after {
+            width: 14px;
+            height: 3px;
+            left: 18px;
+            top: -15px;
+        }
+    }
+
+    &__desc {
+        display: block;
+        font-family: 'Playfair Display', serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 16px;
+        width: 150px;
+    }
+
+    &__pic {
+        display: block;
+        position: absolute;
+        left: 163px;
+        top: -4px;
+        width: 126px;
+        height: auto;
+    }
+
+
+}

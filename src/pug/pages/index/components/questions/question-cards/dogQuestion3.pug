@@ -1,0 +1,53 @@
+.question.active#dogQuestion3
+    .question__title Какого размера ваш питомец ?
+
+    .question__content
+        .container
+            label.question__radio-card.question-controller.open-comment
+                input.unvisible(
+                    type="radio"
+                    name="dog-count"
+                    value="Маленькая собака"
+                    data-next-card-id="#dogQuestion4S"
+                    data-next-progress-position="4")
+                span.value.checker Маленькая собака
+                button.toggle
+                span.comment
+                    span Собаки массой от 2 до 5 кг и высотой в холке менее 35 см. Мопс, Йоркширский терьер, Такса, Пикинес, Чихуахуа
+
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="dog-count"
+                    value="Среднего размера"
+                    data-next-card-id="#dogQuestion4M"
+                    data-next-progress-position="4")
+                span.value.checker Среднего размера
+                button.toggle
+                span.comment
+                    span Собаки массой до 25 кг и высотой в холке до 60 см. Пудель, Чау-чау, Шарпей, Лайка, Хаски, Спаниель, Бультерьер
+
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="dog-count"
+                    value="Большая собака"
+                    data-prev-card-id="#start"
+                    data-next-card-id="#dogQuestion4L"
+                    data-next-progress-position="4")
+                span.value.checker Большая собака
+                button.toggle
+                span.comment
+                    span Собаки массой от 25 кг и высотой в холке от 60 см. Мастиф, Алабай, Дог, Немецкая овчарка, Сенбернар, Ротвейлер, Далматин
+
+    .question__banner
+        .question__ticker
+            ul.question__ticker-wrap
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+        .question__image(style="background-image: url(/img/dogQuestions-bnr3.jpg);")
+
+    button.question__back(data-prev-card-id="#dogQuestion2" data-prev-progress-position="2")

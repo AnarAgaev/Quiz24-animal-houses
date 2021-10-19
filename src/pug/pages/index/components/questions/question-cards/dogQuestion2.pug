@@ -1,0 +1,44 @@
+.question.hidden#dogQuestion2
+    .question__title Сколько у вас собак ?
+
+    .question__content
+        .container
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="dog-count"
+                    value="У меня один любимец"
+                    data-next-card-id="#dogQuestion3"
+                    data-next-progress-position="3")
+                span.value.checker У меня один любимец
+
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="dog-count"
+                    value="У меня две собаки"
+                    data-next-card-id="#dogQuestion3"
+                    data-next-progress-position="3")
+                span.value.checker У меня две собаки
+
+            label.question__radio-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="dog-count"
+                    value="Три и более"
+                    data-prev-card-id="#start"
+                    data-next-card-id="#dogQuestion3"
+                    data-next-progress-position="3")
+                span.value.checker Три и более
+
+    .question__banner
+        .question__ticker
+            ul.question__ticker-wrap
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+                li Домик для вашего питомца
+        .question__image
+
+    button.question__back(data-prev-card-id="#start" data-prev-progress-position="1")
