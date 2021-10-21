@@ -198,5 +198,18 @@ $(document).ready(function () {
                 $('#progressVal').text(num + '%');
             }
         }
+
+        setTimeout(showGetContact, 5000);
+    }
+    
+    function showGetContact() {
+        let loader = $('#loader')[0],
+            timeout = 400;
+
+        // Скрываем лоадер и паказваем захват контактов
+        inactiveQuestion(loader);
+        hideQuestion(loader, timeout);
+        // showQuestion(id, timeout);
+        // activeQuestion(id, timeout + 100);
     }
 });
