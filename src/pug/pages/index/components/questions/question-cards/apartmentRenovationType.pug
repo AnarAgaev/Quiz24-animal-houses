@@ -1,23 +1,23 @@
 .question.hidden#apartmentRenovationType
-    .question__title Какой ремонт у вас дома ?
+    .question__title Какой ремонт у вас дома?
 
     .question__content
         .container
             label.question__radio-card.question-controller
                 input.unvisible(
                     type="radio"
-                    name="sleeping-place"
-                    value="Дизайнерский ремонт"
-                    data-next-card-id="#apartmentRenovationStyle"
+                    name="renovation"
+                    value="Дизайнерский ремонт."
+                    data-next-question-id="#apartmentRenovationStyle"
                     data-next-progress-position="6")
                 span.value.checker Дизайнерский ремонт
 
             label.question__radio-card.question-controller
                 input.unvisible(
                     type="radio"
-                    name="sleeping-place"
-                    value="Обычный ремонт"
-                    data-next-card-id="#loader"
+                    name="renovation"
+                    value="Обычный ремонт."
+                    data-next-question-id="#loader"
                     data-next-progress-position="6")
                 span.value.checker Обычный ремонт
 
@@ -29,6 +29,6 @@
                 li Домик для вашего питомца
                 li Домик для вашего питомца
                 li Домик для вашего питомца
-        .question__image(style="background-image: url(/img/catQuestions-bnr5.jpg);")
+        .question__image(style="background-image: url();")
 
-    button.question__back(data-prev-card-id="" data-prev-progress-position="")
+    button.question__back(data-prev-question-id="" data-prev-progress-position="")

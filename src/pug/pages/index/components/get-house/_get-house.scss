@@ -17,18 +17,7 @@
     }
 
     &__btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 244px;
-        height: 40px;
-        background: $color-accent;
-        margin: 0 auto;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 17px;
-        color: $color-font-secondary;
-        text-transform: uppercase;
     }
 
     &__content {

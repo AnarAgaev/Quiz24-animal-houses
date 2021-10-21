@@ -1,0 +1,28 @@
+.consultation-modal#consultationModal
+
+    .consultation-modal__dialog.invisible#consultationModalDialog
+        .consultation-modal__content
+            button.consultation-modal__close
+            .title
+                img(src="/img/icon-person.jpg" alt="")
+                span Получите быструю консультацию
+            .content
+                h4 Вы узнаете:
+                ul
+                    li Какой домик подойдет вашему питомцу под ваш интерьер
+                    li Срок изготовления домика
+                    li Примерную стоимость
+            form(action="" method="GET")
+                label
+                    input(type="text" name="phone" id="fastPhone" placeholder="Введите номер телефона")
+                label
+                    input(type="text" name="time" id="fastCallbackTime" placeholder="Укажите удобное время")
+                button.btn.btn_inactive(type="submit") получить консультацию
+
+    .consultation-modal__thanks.invisible.hidden#consultationModalThanks
+        .consultation-modal__content
+            button.consultation-modal__close
+            img(src="/img/icon-person.jpg" alt="")
+            h4 спасибо!
+            p В течении 30 минут наш дизайнер вам перезвонит
+

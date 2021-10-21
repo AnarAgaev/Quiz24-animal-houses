@@ -9,13 +9,18 @@ html(lang="ru")
         meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
         meta(name="robots" content="no-index, follow")
 
-        link(rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon")
+        link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+        link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+        link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+        link(rel="manifest" href="/img/favicon/site.webmanifest")
 
         meta(name="description" content=description)
         meta(name="keywords" content=keywords)
         title #{title}
 
     body(class=pageClass)
+
+        include ../pages/index/components/consultation-modal/consultation-modal
 
         .back-line.back-line_one
         .back-line.back-line_two

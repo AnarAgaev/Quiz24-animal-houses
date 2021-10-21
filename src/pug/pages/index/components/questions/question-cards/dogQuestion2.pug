@@ -1,34 +1,37 @@
 .question.hidden#dogQuestion2
-    .question__title Сколько у вас собак ?
+    .question__title Сколько у вас собак?
 
     .question__content
         .container
             label.question__radio-card.question-controller
                 input.unvisible(
                     type="radio"
-                    name="dog-count"
-                    value="У меня один любимец"
-                    data-next-card-id="#dogQuestion3"
-                    data-next-progress-position="3")
+                    name="count"
+                    value="У меня один любимец."
+                    data-next-question-id="#dogQuestion3"
+                    data-next-progress-position="3"
+                    data-next-banner-img="dogQuestions-bnr3.jpg")
                 span.value.checker У меня один любимец
 
             label.question__radio-card.question-controller
                 input.unvisible(
                     type="radio"
-                    name="dog-count"
-                    value="У меня две собаки"
-                    data-next-card-id="#dogQuestion3"
-                    data-next-progress-position="3")
+                    name="count"
+                    value="У меня две собаки."
+                    data-next-question-id="#dogQuestion3"
+                    data-next-progress-position="3"
+                    data-next-banner-img="dogQuestions-bnr3.jpg")
                 span.value.checker У меня две собаки
 
             label.question__radio-card.question-controller
                 input.unvisible(
                     type="radio"
-                    name="dog-count"
-                    value="Три и более"
+                    name="count"
+                    value="Три и более."
                     data-prev-card-id="#start"
-                    data-next-card-id="#dogQuestion3"
-                    data-next-progress-position="3")
+                    data-next-question-id="#dogQuestion3"
+                    data-next-progress-position="3"
+                    data-next-banner-img="dogQuestions-bnr3.jpg")
                 span.value.checker Три и более
 
     .question__banner

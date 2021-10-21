@@ -42,6 +42,12 @@
             border-radius: 999px;
             transition: width .3s ease-out;
         }
+
+        @for $i from 6 through 1 {
+            &:nth-child(#{$i}) {
+                z-index: calc(7 - #{$i});
+            }
+        }
     }
 
     &__point {

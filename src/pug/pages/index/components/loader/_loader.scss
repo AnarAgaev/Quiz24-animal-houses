@@ -1,11 +1,29 @@
 @import "../../../../../scss/variables";
 
 .loader {
-    margin-top: 40px;
+    margin-top: -11px;
+    margin-bottom: 40px;
+
+    &.active {
+        .loader__progress {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .loader__txt {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: .2s;
+        }
+    }
 
     &__progress {
         display: flex;
         justify-content: center;
+        transform: translateY(7px);
+        opacity: 0;
+        transition: all .3s ease-out;
     }
 
     &__txt {
@@ -20,12 +38,7 @@
         opacity: 0;
         transform: translateY(10px);
         transition: all .3s;
-        transition-delay: .2s;
-
-        &.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        transition-delay: 3s;
     }
 }
 

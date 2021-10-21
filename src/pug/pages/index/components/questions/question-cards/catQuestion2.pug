@@ -1,14 +1,14 @@
 .question.hidden#catQuestion2
-    .question__title Сколько у вас кошек ?
+    .question__title Сколько у вас кошек?
 
     .question__content
         .container
             label.question__radio-card.question-controller
                 input.unvisible(
                     type="radio"
-                    name="cat-count"
-                    value="У меня один любимец"
-                    data-next-card-id="#catQuestion3"
+                    name="count"
+                    value="У меня один любимец."
+                    data-next-question-id="#catQuestion3"
                     data-next-progress-position="3"
                     data-next-banner-img="catQuestions-bnr3.jpg")
                 span.value.checker У меня один любимец
@@ -16,9 +16,9 @@
             label.question__radio-card.question-controller
                 input.unvisible(
                     type="radio"
-                    name="cat-count"
-                    value="У меня два котика"
-                    data-next-card-id="#catQuestion3"
+                    name="count"
+                    value="У меня два котика."
+                    data-next-question-id="#catQuestion3"
                     data-next-progress-position="3"
                     data-next-banner-img="catQuestions-bnr3.jpg")
                 span.value.checker У меня два котика
@@ -26,10 +26,10 @@
             label.question__radio-card.question-controller
                 input.unvisible(
                     type="radio"
-                    name="cat-count"
-                    value="Три и более"
+                    name="count"
+                    value="Три и более."
                     data-prev-card-id="#start"
-                    data-next-card-id="#catQuestion3"
+                    data-next-question-id="#catQuestion3"
                     data-next-progress-position="3"
                     data-next-banner-img="catQuestions-bnr3.jpg")
                 span.value.checker Три и более
@@ -44,4 +44,4 @@
                 li Домик для вашего питомца
         .question__image
 
-    button.question__back(data-prev-card-id="" data-prev-progress-position="")
+    button.question__back(data-prev-question-id="" data-prev-progress-position="")
