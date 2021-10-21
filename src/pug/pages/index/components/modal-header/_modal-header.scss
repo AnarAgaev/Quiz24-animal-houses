@@ -56,6 +56,7 @@
         line-height: 11px;
         text-decoration-line: underline;
         color: $color-font-primary;
+        cursor: pointer;
 
         @media (min-width: $lg) {
             &:hover {
@@ -89,6 +90,7 @@
 
 .modal-header-toggle {
     height: 17px;
+    cursor: pointer;
 
     span {
         display: block;

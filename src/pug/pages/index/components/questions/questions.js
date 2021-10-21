@@ -26,6 +26,9 @@ $(document).ready(function () {
                     // Даваляем данные в кнопку назад у следующего вопроса
                     pushDataToBackBtn(controller, data.id, data.pos - 1);
 
+                    // Сбрасываем классы хедера, чтобы не прыгал экран
+                    $('#header').removeClass('visible');
+
                     // С небольшой задержкой меняем вопросы
                     setTimeout(() => {
                         // Обновляем прогресс бар
@@ -52,6 +55,9 @@ $(document).ready(function () {
                     let question = getQuestion(this),
                         pos = $(this).data('prevProgressPosition'),
                         id = '#' + $(this).data('prevQuestionId');
+
+                    // Сбрасываем предыдущий вопрос (только интерфейс)
+                    $(id).find('input').prop('checked', false);
 
                     // Обновляем прогресс бар
                     setProgress(pos);

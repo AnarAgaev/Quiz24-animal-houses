@@ -1,5 +1,6 @@
 // Includes custom scripts
 import './js/main';
+import './pug/templates/header/header';
 import './pug/pages/index/components/modal-header/modal-header';
 import './pug/pages/index/components/get-house/get-house';
 import './pug/pages/index/components/questions/questions';

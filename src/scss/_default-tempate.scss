@@ -43,21 +43,21 @@ body {
     position: relative;
     margin: 0 auto;
 
-    @media (min-width: $sm) {
-        max-width: 540px;
-    }
+    //@media (min-width: $sm) {
+    //    max-width: 540px;
+    //}
 
     @media (min-width: $md) {
         max-width: 720px;
     }
 
-    @media (min-width: $lg) {
-        max-width: 960px;
-    }
+    //@media (min-width: $lg) {
+    //    max-width: 960px;
+    //}
 
-    @media (min-width: $xl) {
-        max-width: 1140px;
-    }
+    //@media (min-width: $xl) {
+    //    max-width: 1140px;
+    //}
 }
 
 ul, li {
@@ -194,6 +194,8 @@ input[type="password"]::-ms-reveal {
     width: 74px;
     height: 48px;
     margin-top: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .hidden {

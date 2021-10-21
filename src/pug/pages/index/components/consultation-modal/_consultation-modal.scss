@@ -27,7 +27,7 @@
     &.visible {
         left: 0;
         opacity: 1;
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(3px);
         transition:
                 left 0s linear 0s,
                 opacity .15s linear 0s,
