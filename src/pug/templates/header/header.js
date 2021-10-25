@@ -24,7 +24,7 @@ $(document).ready(() => {
             scrollCounter = scrollTop;
             $('#header').removeClass('visible');
         } else {
-            if (scrollTop < scrollCounter - 50) {
+            if (scrollTop < scrollCounter - 100) {
                 $('#header').addClass('visible');
             }
         }

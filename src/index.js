@@ -5,6 +5,8 @@ import './pug/pages/index/components/modal-header/modal-header';
 import './pug/pages/index/components/get-house/get-house';
 import './pug/pages/index/components/questions/questions';
 import './pug/pages/index/components/consultation-modal/consultation-modal';
+import './pug/pages/index/components/get-contact/get-contact';
+import './pug/pages/index/components/results/results';
 
 // Include vendor styles
 import 'normalize.css';

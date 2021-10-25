@@ -1,0 +1,24 @@
+//- active hidden
+.get-contact.hidden#getContact
+    .container
+        img.get-contact__loader.animation-el(src="/img/loader-check.svg" alt="")
+        h4.get-contact__caption.animation-el Предварительные результаты сформированы
+        .get-contact__body.animation-el
+            h5.get-contact__title
+                | Они откроются на этой странице
+                br
+                | сразу после ввода номера
+            span.get-contact__subtitle Где вам удобнее получить подходящие варианты дизайнерских домиков?
+
+            include form-contact
+
+            span.get-contact__pic-caption Система автоматически
+            span.get-contact__pic-text Подобрала домики, которые подойдут вашему питомцу и закрепила подарок
+            img.get-contact__image(src="/img/phone.png" alt="")
+
+            include form-contact
+
+    .get-contact__banner.animation
+        .container
+            .pic
+            span.txt Подходящие домики для вашего питомца

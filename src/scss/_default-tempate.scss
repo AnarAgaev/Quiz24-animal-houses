@@ -24,6 +24,10 @@ body {
     font-weight: normal;
     font-style: normal;
     color: $color-font-primary;
+
+    &.modal-open {
+        overflow: hidden;
+    }
 }
 
 .header,

@@ -1,0 +1,45 @@
+form.get-contact__form(action="", method="GET")
+    ul.get-contact__connects
+        li
+            label
+                input.unvisible(
+                    type="radio"
+                    name="connect"
+                    value="WhatsApp")
+                span.icon
+                    include ../../../../../img/i-whatsapp.svg
+                span.caption WhatsApp
+                span.checker
+
+        li
+            label
+                input.unvisible(
+                    type="radio"
+                    name="connect"
+                    value="Telegram")
+                span.icon
+                    include ../../../../../img/i-tele.svg
+                span.caption Telegram
+                span.checker
+
+        li
+            label
+                input.unvisible(
+                    type="radio"
+                    name="connect"
+                    value="Phone")
+                span.icon
+                    include ../../../../../img/i-phone.svg
+                span.caption
+                    | Перезвоните мне
+                    | !{' '}
+                    | Есть вопрос
+                span.checker
+
+    label
+        input(
+            type="text"
+            name="phone"
+            id="firstConnectPhone"
+            placeholder="Введите номер телефона")
+    button.btn.btn_inactive(type="submit") получить результат

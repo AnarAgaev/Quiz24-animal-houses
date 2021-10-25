@@ -15,7 +15,7 @@ STATE = new Proxy(STATE, {
         /*
          * Если в стейте меняется телефон,
          * то сразу меняем телефон во всех
-         * полх ввода телефона.
+         * полях ввода телефона.
          */
         if (prop === 'phone') {
             fastPhoneMask.unmaskedValue = val;

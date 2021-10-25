@@ -20,6 +20,8 @@ $(document).ready(() => {
     function showConsultationModal() {
         $('#modalHeader').removeClass('visible');
         $('#consultationModal').addClass('visible');
+        $('body').addClass('modal-open');
+        $('#header').removeClass('visible');
 
         setTimeout(
             () =>  $('#consultationModalDialog')
@@ -28,10 +30,9 @@ $(document).ready(() => {
     }
 
     function hideConsultationModal() {
-        $('#consultationModalDialog')
-            .addClass('invisible');
-        $('#consultationModalThanks')
-            .addClass('invisible');
+        $('#consultationModalDialog').addClass('invisible');
+        $('#consultationModalThanks').addClass('invisible');
+        $('body').removeClass('modal-open');
 
         setTimeout(
             () => {

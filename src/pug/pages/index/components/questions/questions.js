@@ -206,10 +206,10 @@ $(document).ready(function () {
         let loader = $('#loader')[0],
             timeout = 400;
 
-        // Скрываем лоадер и паказваем захват контактов
+        // Скрываем лоадер и паказваем секцию захват контактов
         inactiveQuestion(loader);
         hideQuestion(loader, timeout);
-        // showQuestion(id, timeout);
-        // activeQuestion(id, timeout + 100);
+        showQuestion('#getContact', timeout);
+        activeQuestion('#getContact', timeout + 100);
     }
 });

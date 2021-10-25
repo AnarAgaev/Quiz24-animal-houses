@@ -1,0 +1,225 @@
+@import "../../../../../scss/variables";
+
+.get-contact {
+    margin-top: -11px;
+    overflow: hidden;
+    height: auto;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 3s linear, opacity .3s linear;
+
+    &.active {
+        max-height: 1500px;
+        opacity: 1;
+
+        .animation-el {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1) !important;
+        }
+    }
+
+    .animation-el {
+        opacity: 0;
+        transform: translateY(7px);
+        transition: all .3s ease-out;
+    }
+
+    path {
+        transition: all .2s linear;
+    }
+
+    &__loader {
+        display: block;
+        margin: 0 auto 17px;
+        width: 71px;
+        height: 71px;
+        transform: translateY(7px) scale(0.8) !important;
+        transition-delay: .4s !important;
+    }
+
+    &__caption {
+        width: 100%;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: -0.02em;
+        transition-delay: .6s !important;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: auto;
+        margin-top: 25px;
+        transition-delay: .8s !important;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    &__subtitle {
+        max-width: 480px;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    &__form {
+        display: block;
+        position: relative;
+        width: 288px;
+        height: auto;
+
+        input:checked ~ .icon .icon-body {
+            fill: $color-accent;
+        }
+
+        input:checked ~ .caption {
+            color: $color-font-primary;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+    }
+
+    &__connects {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 25px;
+
+        li {
+            display: block;
+            justify-content: flex-start;
+            width: 33.333%;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .icon {
+                display: block;
+                width: 36px;
+                height: 36px;
+                margin-bottom: 10px;
+            }
+
+            .caption {
+                display: flex;
+                align-items: center;
+                height: 26px;
+                font-size: 11px;
+                line-height: 13px;
+                text-align: center;
+                color: #BDBDBD;
+                transition: color .2s linear;
+                margin-bottom: 10px;
+            }
+
+            .checker {
+                display: block;
+                width: 25px;
+                height: 25px;
+                position: relative;
+
+                &::before {
+                    background-image: url("/img/check-passive-icon.svg");
+                }
+                &::after {
+                    background-image: url("/img/check-active-icon.svg");
+                }
+            }
+        }
+
+    }
+
+    &__pic-caption {
+        display: block;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    &__pic-text {
+        display: block;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &__image {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    &__banner {
+        width: 100%;
+        max-width: 1092px;
+        margin: 0 auto 25px;
+
+        &.animation {
+            animation: banner 1.3s linear 0s infinite normal forwards;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: $color-font-primary;
+            max-width: 564px;
+        }
+
+        .pic {
+            display: block;
+            position: relative;
+            flex: 1 0 auto;
+            width: 57px;
+            max-width: 57px;
+            height: 80px;
+            margin: -7px 15px -7px 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/img/lock-close.png");
+        }
+
+        .txt {
+            display: block;
+            position: relative;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 18px;
+            color: $color-font-secondary;
+            padding-right: 20px;
+        }
+    }
+}
+
+@keyframes banner {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+}
