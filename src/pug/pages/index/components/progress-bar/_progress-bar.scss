@@ -1,7 +1,7 @@
 @import "../../../../../scss/variables";
 
 .progress-bar {
-    max-width: 500px;
+    max-width: 540px;
     margin: 0 auto;
 
     &__wrap {
@@ -13,12 +13,20 @@
         height: 2px;
         background-color: #c4c4c4;
         border-radius: 999px;
+
+        @media (min-width: $md) {
+            height: 4px;
+        }
     }
 
     &__step {
         position: relative;
         height: 2px;
         width: 16.66666666666667%;
+
+        @media (min-width: $md) {
+            height: 4px;
+        }
 
         &.active {
             &::before {
@@ -57,8 +65,13 @@
         top: 50%;
         right: 0;
         transform: translate(50%, -50%);
-        background: white url("/img/prog-innactive.png") center no-repeat;
+        background: transparent url("/img/prog-innactive.png") center no-repeat;
         background-size: cover;
+
+        @media (min-width: $md) {
+            width: 34px;
+            height: 32px;
+        }
 
         &::after {
             content: "";

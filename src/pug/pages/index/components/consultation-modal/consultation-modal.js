@@ -44,84 +44,40 @@ $(document).ready(() => {
 
                 $('#consultationModalThanks')
                     .addClass('hidden');
-
-                cleanConsultationControllers();
             },
             300);
     }
-
-    function cleanConsultationControllers() {
-        $('#fastCallbackTime').val('');
-        delete STATE.fastCallbackTime;
-
-        if (!validatePhone(STATE.phone)) {
-            STATE.phone = '';
-            delete STATE.phone;
-        }
-    }
-
-    // Маска для телефона
-    let fastPhone = document.getElementById('fastPhone');
-    window.fastPhoneMask = IMask(fastPhone, phoneMaskOptions);
-
-    $('#fastPhone').focus(() => {
-        fastPhoneMask.updateOptions({
-            lazy: false,
-        });
-    });
-
-    $('#fastPhone').blur(() => {
-        fastPhoneMask.updateOptions({
-            lazy: true,
-        });
-    });
-
-    $('#fastPhone').on(
-        'input',
-        () => {
-            pushPhoneToState(fastPhoneMask.unmaskedValue);
-
-            if (validatePhone(fastPhoneMask.unmaskedValue)) {
-                $('#consultationModal [type="submit"]').removeClass('btn_inactive');
-            } else {
-                $('#consultationModal [type="submit"]').addClass('btn_inactive');
-            }
-        }
-    );
-
-    $('#fastCallbackTime').on(
-        'input',
-        function () {
-            STATE.fastCallbackTime = $(this).val();
-        }
-    );
 
     // Обработка отправки формы
     $('#consultationModal form').submit(function (e) {
         e.preventDefault();
 
-        if (validatePhone(STATE.phone)) {
+        if (validatePhone(STATE.phone) && STATE.callbackTime !== undefined) {
+            let data = Object.assign({}, STATE);
+
+            data.from = "Быстрая консультация";
+
+            if (!STATE.callbackTime) {
+                data.callbackTime = "Удобное время для звонка не указано.";
+            }
 
             if (IS_DEBUGGING) {
-                console.log(
-                    'Данные, отправляемые на сервер:',
-                    Object.assign({}, STATE)
-                );
+                console.log('Данные, отправляемые на сервер:', data);
             }
 
             let request = $.ajax({
                 url: 'https://jsonplaceholder.typicode.com/todos/1', // !!!!!!!!!!!!!!! тестовый сервер
                 method: "GET", // !!!!!!!!!!!!!!! при реальном запросе поменять на POST
-                data: JSON.stringify(Object.assign({}, STATE)),
+                data: JSON.stringify(data),
                 dataType: "JSON"
             });
 
             request.done(response => {
 
+                // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
                 console.log(response);
 
-                if (response) { // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
-
+                if (response) {
                     $('#consultationModalDialog').addClass('invisible');
 
                     setTimeout(

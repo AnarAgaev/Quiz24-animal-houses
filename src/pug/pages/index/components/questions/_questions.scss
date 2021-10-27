@@ -4,9 +4,29 @@
     position: relative;
     padding-top: 26px;
     padding-bottom: 25px;
+
+    @media (min-width: $md) {
+        padding-top: 50px;
+        padding-bottom: 77px;
+    }
+
+    @media (min-width: $lg) {
+        padding-top: 71px;
+    }
 }
 
 .question {
+    @media (min-width: $md) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-controller {
+        @media (min-width: $lg) {
+            cursor: pointer;
+        }
+    }
+
     &.active {
         .question__title {
             transform: translateY(0);
@@ -34,6 +54,8 @@
     }
 
     &__title {
+        max-width: 600px;
+        margin: 0 auto;
         font-weight: 600;
         font-size: 16px;
         line-height: 20px;
@@ -42,10 +64,20 @@
         transform: translateY(7px);
         opacity: 0;
         transition: all .3s ease-out;
+
+        @media (min-width: $md) {
+            font-size: 22px;
+            line-height: 25px;
+            order: 1;
+        }
+
+        @media (min-width: $lg) {
+            font-size: 24px;
+            line-height: 29px;
+        }
     }
 
     &__content {
-        margin-top: 25px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -53,6 +85,52 @@
         transform: translateY(7px);
         opacity: 0;
         transition: all .3s ease-out;
+        margin: 25px auto 0;
+
+        @media (min-width: $md) {
+            max-width: 580px;
+            margin-top: 40px;
+            order: 2;
+        }
+
+        @media (min-width: $lg) {
+            margin-top: 60px;
+        }
+    }
+
+    &__controller-wrap {
+        position: relative;
+
+        .zoom {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 4px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: 1;
+                top: 5px;
+                left: 5px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: $color-font-primary url("/img/icon-zoom.svg") center no-repeat;
+                background-size: 50%;
+
+                @media (min-width: $md) {
+                    width: 30px;
+                    height: 30px;
+                    background-size: 40%;
+                }
+            }
+        }
     }
 
     &__pic-card {
@@ -62,9 +140,16 @@
         height: 165px;
         margin: 0 4px 8px;
 
+        @media (min-width: $md) {
+            width: 276px;
+            height: 250px;
+            margin: 0 6px 12px;
+        }
+
         .img {
             display: block;
             position: relative;
+            z-index: 0;
             width: 100%;
             height: 120px;
             border: 3px solid transparent;
@@ -73,6 +158,10 @@
             background-position-x: -3px;
             background-position-y: -3px;
             transition: border-color .2s linear;
+
+            @media (min-width: $md) {
+                height: 183px;
+            }
         }
 
         .value {
@@ -80,6 +169,7 @@
             justify-content: flex-start;
             align-items: center;
             position: relative;
+            z-index: 0;
             width: 100%;
             height: 45px;
             padding-left: 45px;
@@ -89,12 +179,23 @@
             line-height: 17px;
             color: $color-back-dark;
             transition: background-color .3s linear;
+
+            @media (min-width: $md) {
+                height: 67px !important;
+                font-size: 16px !important;
+                line-height: 20px !important;
+                padding-left: 84px !important;
+            }
         }
 
         .checker {
             &::before,
             &::after {
                 left: 10px;
+
+                @media (min-width: $md) {
+                    left: 31px !important;
+                }
             }
         }
 
@@ -129,6 +230,11 @@
         width: 100%;
         margin-bottom: 20px;
 
+        @media (min-width: $md) {
+            width: 276px;
+            margin: 0 auto 15px;
+        }
+
         .value {
             display: flex;
             justify-content: flex-start;
@@ -144,23 +250,45 @@
             line-height: 15px;
             color: $color-back-dark;
             transition: background-color .3s linear;
+
+            @media (min-width: $md) {
+                height: 60px;
+                font-size: 14px;
+                line-height: 17px;
+                padding-left: 77px;
+                padding-right: 10px;
+            }
+
+            &.small-txt {
+                font-size: 12px;
+                line-height: 15px;
+            }
         }
 
         .checker {
             &::before,
             &::after {
                 left: 20px;
+
+                @media (min-width: $md) {
+                    left: 30px;
+                }
             }
         }
 
         .toggle {
             display: block;
             position: absolute;
-            top: 0;
+            top: 5px;
             right: 0;
             width: 40px;
             height: 40px;
             margin-right: 5px;
+            cursor: pointer;
+
+            @media (min-width: $md) {
+                top: 10px;
+            }
 
             &::before {
                 content: "";
@@ -189,12 +317,20 @@
             color: $color-font-secondary;
             transition: all .3s linear;
 
+            @media (min-width: $md) {
+                font-size: 11px;
+                line-height: 1.4;
+            }
+
             span {
                 display: block;
                 padding: 0 27px 15px 65px;
+
+                @media (min-width: $md) {
+                    padding: 0 40px 20px;
+                }
             }
         }
-
 
         &.open-comment {
             .toggle::before {
@@ -213,6 +349,24 @@
         transform: translateY(7px);
         opacity: 0;
         transition: all .3s ease-out;
+
+        @media (min-width: $md) {
+            order: 4;
+            margin-top: 50px;
+        }
+
+        @media (min-width: $lg) {
+            max-width: 960px;
+            left: 50%;
+            position: relative;
+            margin-left: -480px;
+            overflow: hidden;
+        }
+
+        @media (min-width: $xl) {
+            max-width: 1089px;
+            margin-left: -544px;
+        }
     }
 
     &__ticker {
@@ -220,6 +374,10 @@
         width: 100%;
         height: 25px;
         background: #dcdcdc;
+
+        @media (min-width: $md) {
+            height: 35px;
+        }
 
         &-wrap {
             position: absolute;
@@ -248,6 +406,13 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        background-color: #f5f5f5;
+
+        @media (min-width: $md) {
+            width: 727px;
+            margin: 0 auto;
+            padding-bottom: 445px;
+        }
 
         &::before,
         &::after {
@@ -261,6 +426,10 @@
             line-height: 12px;
             white-space: nowrap;
             color: $color-font-secondary;
+
+            @media (min-width: $md) {
+                padding: 8px 20px;
+            }
         }
 
         &::before {
@@ -268,6 +437,11 @@
             top: 0;
             background-color: rgba(198, 181, 92, 0.85);
             border-radius: 0 0 10px 10px;
+
+            @media (min-width: $md) {
+                font-size: 12px;
+                line-height: 15px;
+            }
         }
 
         &::after {
@@ -275,6 +449,11 @@
             bottom: 0;
             background-color: rgba(61, 61, 61, 0.85);
             border-radius: 10px 10px 0 0;
+
+            @media (min-width: $md) {
+                font-size: 14px;
+                line-height: 17px;
+            }
         }
 
     }
@@ -291,6 +470,14 @@
         opacity: 0;
         transition: all .3s ease-out;
 
+        @media (min-width: $md) {
+            order: 3;
+            width: 276px;
+            height: 60px;
+            margin: 36px auto 0;
+            cursor: pointer;
+        }
+
         &::before {
             content: "";
             display: block;
@@ -298,6 +485,12 @@
             height: 10px;
             margin-left: -20px;
             background: url("/img/arr-back.svg") center no-repeat;
+
+            @media (min-width: $md) {
+                width: 20px;
+                background-position: left center;
+                margin-left: -14px;
+            }
         }
 
         &::after {
@@ -309,6 +502,11 @@
             line-height: 17px;
             color: $color-font-secondary;
             margin-left: 10px;
+
+            @media (min-width: $md) {
+                font-size: 16px;
+                line-height: 20px;
+            }
         }
     }
 }
@@ -329,6 +527,24 @@
     .checker:before {
         left: 10px;
     }
+
+    .question__radio-card {
+        @media (min-width: $md) {
+            width: 563px;
+
+            .value {
+                height: 67px;
+                font-size: 16px;
+                line-height: 20px;
+                padding-left: 84px;
+            }
+
+            .checker:after,
+            .checker:before {
+                left: 31px !important;
+            }
+        }
+    }
 }
 
 .checker {
@@ -342,16 +558,22 @@
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background-size: 100%;
         transition: opacity .2s linear;
+
+        @media (min-width: $md) {
+            width: 32px;
+            height: 32px;
+        }
     }
 
     &::before {
         background: url("/img/check-passive.svg") center no-repeat;
+        background-size: cover;
     }
 
     &::after {
         background: url("/img/check-active.svg") center no-repeat;
+        background-size: cover;
         opacity: 0;
     }
 }
@@ -369,3 +591,63 @@ input[type="radio"]:checked ~ .comment {
     background-color: $color-accent;
 }
 
+.fancybox__container {
+    .fancybox__nav,
+    .fancybox__button--zoom,
+    .fancybox__button--slideshow,
+    .fancybox__button--fullscreen ,
+    .fancybox__toolbar div:first-child {
+        display: none;
+    }
+
+    .fancybox__backdrop {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(3px);
+    }
+
+    .fancybox__caption {
+        color: $color-font-primary;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .carousel__button {
+        svg {
+            display: none;
+        }
+
+        display: block;
+        position: absolute;
+        top: 0 !important;
+        width: 50px;
+        height: 50px;
+        z-index: 1;
+        border-radius: 0;
+
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 13px;
+            height: 2px;
+            background-color: $color-font-primary;
+            -webkit-transition: background-color .2s linear;
+            -o-transition: background-color .2s linear;
+            transition: background-color .2s linear;
+        }
+
+        &::before {
+            transform: translate(-50%,-50%) rotate(52deg);
+        }
+
+        &::after {
+            transform: translate(-50%,-50%) rotate( -52deg);
+        }
+
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(3px);
+    }
+}

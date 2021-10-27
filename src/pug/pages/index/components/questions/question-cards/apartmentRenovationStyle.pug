@@ -1,72 +1,103 @@
+//- .active .hidden
 .question.hidden#apartmentRenovationStyle
     .question__title В каком стиле выполнен ремонт?
 
     .question__content
-        label.question__pic-card.question-controller
+        .question__controller-wrap
             span.zoom
-            input.unvisible(
-                type="radio"
-                name="style"
-                value="Минимализм."
-                data-next-question-id="#loader"
-                data-next-progress-position="6")
-            span.img(style="background-image: url(/img/renovation-type1.jpg);")
-            span.value.checker.active Минимализм
+            a.question__gallery-item.unvisible(
+                href="/img/renovation-types/renovation-type-1.jpg"
+                data-fancybox="gallery"
+                data-caption="Минимализм")
+            label.question__pic-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="style"
+                    value="Минимализм."
+                    data-next-question-id="#loader"
+                    data-next-progress-position="6")
+                span.img(style="background-image: url(/img/renovation-types/renovation-type-small-1.jpg);")
+                span.value.checker Минимализм
 
-        label.question__pic-card.question-controller
+        .question__controller-wrap
             span.zoom
-            input.unvisible(
-                type="radio"
-                name="style"
-                value="Современный."
-                data-next-question-id="#loader"
-                data-next-progress-position="6")
-            span.img(style="background-image: url(/img/renovation-type2.jpg);")
-            span.value.checker.active Современный
+            a.question__gallery-item.unvisible(
+                href="/img/renovation-types/renovation-type-2.jpg"
+                data-fancybox="gallery"
+                data-caption="Современный")
+            label.question__pic-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="style"
+                    value="Современный."
+                    data-next-question-id="#loader"
+                    data-next-progress-position="6")
+                span.img(style="background-image: url(/img/renovation-types/renovation-type-small-2.jpg);")
+                span.value.checker Современный
 
-        label.question__pic-card.question-controller
+        .question__controller-wrap
             span.zoom
-            input.unvisible(
-                type="radio"
-                name="style"
-                value="Современная классика."
-                data-next-question-id="#loader"
-                data-next-progress-position="6")
-            span.img(style="background-image: url(/img/renovation-type3.jpg);")
-            span.value.checker.active Современная классика
+            a.question__gallery-item.unvisible(
+                href="/img/renovation-types/renovation-type-3.jpg"
+                data-fancybox="gallery"
+                data-caption="Современная классика")
+            label.question__pic-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="style"
+                    value="Современная классика."
+                    data-next-question-id="#loader"
+                    data-next-progress-position="6")
+                span.img(style="background-image: url(/img/renovation-types/renovation-type-small-3.jpg);")
+                span.value.checker Современная классика
 
-        label.question__pic-card.question-controller
+        .question__controller-wrap
             span.zoom
-            input.unvisible(
-                type="radio"
-                name="style"
-                value="Лофт."
-                data-next-question-id="#loader"
-                data-next-progress-position="6")
-            span.img(style="background-image: url(/img/renovation-type4.jpg);")
-            span.value.checker.active Лофт
+            a.question__gallery-item.unvisible(
+                href="/img/renovation-types/renovation-type-4.jpg"
+                data-fancybox="gallery"
+                data-caption="Лофт")
+            label.question__pic-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="style"
+                    value="Лофт."
+                    data-next-question-id="#loader"
+                    data-next-progress-position="6")
+                span.img(style="background-image: url(/img/renovation-types/renovation-type-small-4.jpg);")
+                span.value.checker Лофт
 
-        label.question__pic-card.question-controller
+        .question__controller-wrap
             span.zoom
-            input.unvisible(
-                type="radio"
-                name="style"
-                value="Эко-стиль."
-                data-next-question-id="#loader"
-                data-next-progress-position="6")
-            span.img(style="background-image: url(/img/renovation-type5.jpg);")
-            span.value.checker.active Эко-стиль
+            a.question__gallery-item.unvisible(
+                href="/img/renovation-types/renovation-type-5.jpg"
+                data-fancybox="gallery"
+                data-caption="Эко-стиль")
+            label.question__pic-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="style"
+                    value="Эко-стиль."
+                    data-next-question-id="#loader"
+                    data-next-progress-position="6")
+                span.img(style="background-image: url(/img/renovation-types/renovation-type-small-5.jpg);")
+                span.value.checker Эко-стиль
 
-        label.question__pic-card.question-controller
+        .question__controller-wrap
             span.zoom
-            input.unvisible(
-                type="radio"
-                name="style"
-                value="Фьюжн."
-                data-next-question-id="#loader"
-                data-next-progress-position="6")
-            span.img(style="background-image: url(/img/renovation-type6.jpg);")
-            span.value.checker.active Фьюжн
+            a.question__gallery-item.unvisible(
+                href="/img/renovation-types/renovation-type-6.jpg"
+                data-fancybox="gallery"
+                data-caption="Фьюжн")
+            label.question__pic-card.question-controller
+                input.unvisible(
+                    type="radio"
+                    name="style"
+                    value="Фьюжн."
+                    data-next-question-id="#loader"
+                    data-next-progress-position="6")
+                span.img(style="background-image: url(/img/renovation-types/renovation-type-small-6.jpg);")
+                span.value.checker Фьюжн
 
         .container
             label.question__radio-card.question-controller

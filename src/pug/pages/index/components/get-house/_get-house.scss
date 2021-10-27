@@ -5,6 +5,15 @@
     padding-top: 25px;
     margin-bottom: 33px;
 
+    @media (min-width: $md) {
+        margin-bottom: 80px;
+    }
+
+    @media (min-width: $lg) {
+        margin-top: -154px;
+        margin-bottom: 102px;
+    }
+
     &__title {
         font-family: 'Playfair Display', serif;
         font-style: normal;
@@ -14,10 +23,30 @@
         text-align: center;
         width: 90%;
         margin: 0 auto 20px;
+
+        @media (min-width: $md) {
+            width: 300px;
+            margin: 0 0 20px;
+            text-align: left;
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        @media (min-width: $lg) {
+            font-size: 18px;
+            line-height: 24px;
+        }
     }
 
     &__btn {
         width: 244px;
+
+        @media (min-width: $md) {
+            margin: 0;
+            width: 264px;
+            height: 55px;
+            font-size: 16px;
+        }
     }
 
     &__content {
@@ -37,7 +66,15 @@
         line-height: 15px;
         margin-bottom: 6px;
         padding: 7px 0;
-        margin-top: 39px;
+        margin-top: 40px;
+
+        @media (min-width: $md) {
+            font-size: 16px;
+            line-height: 20px;
+            width: 184px;
+            height: 34px;
+            margin-bottom: 9px;
+        }
 
         &::before, &::after {
             content: "";
@@ -48,11 +85,18 @@
             background-color: $color-back-line;
         }
 
-        &::before, &::after {
+        &::before {
             width: 3px;
             height: 14px;
             left: 24px;
             top: -20px;
+
+            @media (min-width: $md) {
+                width: 5px;
+                height: 19px;
+                left: 23px;
+                top: -30px;
+            }
         }
 
         &::after {
@@ -60,6 +104,13 @@
             height: 3px;
             left: 18px;
             top: -15px;
+
+            @media (min-width: $md) {
+                width: 19px;
+                height: 5px;
+                left: 16px;
+                top: -23px;
+            }
         }
     }
 
@@ -71,6 +122,12 @@
         font-size: 12px;
         line-height: 16px;
         width: 150px;
+
+        @media (min-width: $md) {
+            font-size: 16px;
+            line-height: 21px;
+            width: 176px;
+        }
     }
 
     &__pic {
@@ -80,7 +137,12 @@
         top: -4px;
         width: 126px;
         height: auto;
+
+        @media (min-width: $md) {
+            left: 224px;
+            top: -10px;
+            width: 216px;
+            height: auto;
+        }
     }
-
-
 }

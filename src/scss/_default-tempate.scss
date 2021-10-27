@@ -38,30 +38,10 @@ body {
 .main {
     flex: 1 0 auto;
     overflow: hidden;
-}
 
-.container {
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    margin: 0 auto;
-
-    //@media (min-width: $sm) {
-    //    max-width: 540px;
-    //}
-
-    @media (min-width: $md) {
-        max-width: 720px;
+    @media (min-width: $xl) {
+        margin-top: -132px;
     }
-
-    //@media (min-width: $lg) {
-    //    max-width: 960px;
-    //}
-
-    //@media (min-width: $xl) {
-    //    max-width: 1140px;
-    //}
 }
 
 ul, li {
@@ -97,6 +77,13 @@ input {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    @media (min-width: $lg) {
+        height: 50px;
+        font-size: 14px;
+        line-height: 17px;
+        padding: 0;
+    }
 
     &::-webkit-input-placeholder {
         color: #828282;
@@ -175,6 +162,12 @@ input[type="password"]::-ms-reveal {
     cursor: pointer;
     transition: background-color .3s linear;
 
+    @media (min-width: $lg) {
+        height: 50px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
     &_inactive {
         background-color: $color-accent;
     }
@@ -183,23 +176,71 @@ input[type="password"]::-ms-reveal {
 .back-line {
     position: fixed;
     top: 0;
+    left: 50%;
     width: 1px;
     height: 100%;
     background-color: $color-back-line;
     z-index: 0;
 
-    &_one { left: 4.6875vw; }
-    &_two { left: 11.875vw; }
-    &_three { right: 20vw; }
-    &_four { right: 4.6875vw; }
+    &_one   { margin-left: -45.3125vw; }
+    &_two   { margin-left: -38.125vw; }
+    &_three { margin-left: 45.1562vw; }
+    &_four  { margin-left: 30vw; }
+    &_five, &_six  {
+        display: none;
+
+        @media (min-width: $lg) {
+            display: block;
+        }
+    }
+
+    @media (min-width: $lg) {
+        &_one   { margin-left: -545px; }
+        &_two   { margin-left: -454px; }
+        &_three { margin-left: -321px; }
+        &_four  { margin-left: -282px; }
+        &_five  { margin-left: 374px; }
+        &_six   { margin-left: 545px; }
+    }
+}
+
+.container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    margin: 0 auto;
+
+    @media (min-width: $md) {
+        max-width: 720px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @media (min-width: $lg) {
+        max-width: 960px;
+    }
+
+    @media (min-width: $xl) {
+        max-width: 1089px;
+    }
 }
 
 .logo {
     width: 74px;
-    height: 48px;
+    height: auto;
     margin-top: 15px;
     position: relative;
     z-index: 1;
+
+    img {
+        width: 100%;
+        height: auto;
+
+        @media (min-width: $md) {
+            width: 114px;
+        }
+    }
 }
 
 .hidden {

@@ -11,55 +11,191 @@ import 'swiper/swiper-bundle.css';
 SwiperCore.use([Pagination]);
 
 $(document).ready(() => {
-    new Swiper('#sliderProduction .swiper', {
+    // Скролл к слайдеру с подобранными домиками
+    $('#goToSliderHouses').click((e) => {
+        e.preventDefault();
+
+        let top = $('#slicerHouses').offset().top - 20;
+
+        $('body,html')
+            .animate({scrollTop: top}, 1000);
+    });
+
+    // Инициализируем слайдер производство
+    window.SLIDER_PRODUCTION =  new Swiper('#sliderProduction .swiper', {
         slidesPerView: 'auto',
         speed: 500,
-        // centeredSlides: true,
         pagination: {
             el: '#sliderProductionPagination',
             clickable: true,
             dynamicBullets: true,
         },
+        breakpoints: {
+            768: {
+                centeredSlides: true,
+                initialSlide: 1,
+            }
+        }
     });
 
-    const SLIDER_RESULT = new Swiper('#sliderHouses .swiper', {
+    // Инициализируем слайдер с подобранными домиками
+    window.SLIDER_RESULT = new Swiper('#sliderHouses .swiper', {
         slidesPerView: 'auto',
         speed: 500,
-        // centeredSlides: true,
         pagination: {
             el: '#sliderHousesPagination',
             clickable: true,
             dynamicBullets: true,
         },
+        breakpoints: {
+            768: {
+                centeredSlides: true,
+                initialSlide: 1,
+            }
+        }
     });
 
-    buildSlider(
-        SLIDER_RESULT,
-        '#sliderHouses',
-        '/img/slider/cat-single/pic',
-        13
+    $(window).resize(() => {
+        SLIDER_PRODUCTION.update();
+        SLIDER_RESULT.update();
+    });
+
+    // Обработка отправки формы Изменить телефон
+    $('#present form').submit(function (e) {
+        e.preventDefault();
+
+        if (validatePhone(STATE.phone)) {
+            let data = Object.assign({}, STATE);
+
+            data.from = "Изменить номер телефона.";
+            delete data.callbackTime;
+
+            if (IS_DEBUGGING) {
+                console.log('Данные, отправляемые на сервер:', data);
+            }
+
+            let request = $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/todos/1', // !!!!!!!!!!!!!!! тестовый сервер
+                method: "GET", // !!!!!!!!!!!!!!! при реальном запросе поменять на POST
+                data: JSON.stringify(data),
+                dataType: "JSON"
+            });
+
+            request.done(response => {
+
+                // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
+                console.log(response);
+
+                if (response)
+                    showThanksModal('#thanksPresentModal');
+            });
+
+            request.fail(function( jqXHR, textStatus ) {
+                alert( "Request failed: " + textStatus );
+            });
+
+        } else return false;
+    });
+
+    // Обработка отправки формы Проверьте номер телефона
+    $('#checkPhone form').submit(function (e) {
+        e.preventDefault();
+
+        if (validatePhone(STATE.phone) && STATE.callbackTime !== undefined) {
+            let data = Object.assign({}, STATE);
+
+            data.from = "Проверьте номер телефона.";
+
+            if (!STATE.callbackTime) {
+                data.callbackTime = "Удобное время для звонка не указано.";
+            }
+
+            if (IS_DEBUGGING) {
+                console.log('Данные, отправляемые на сервер:', data);
+            }
+
+            let request = $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/todos/1', // !!!!!!!!!!!!!!! тестовый сервер
+                method: "GET", // !!!!!!!!!!!!!!! при реальном запросе поменять на POST
+                data: JSON.stringify(data),
+                dataType: "JSON"
+            });
+
+            request.done(response => {
+
+                // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
+                console.log(response);
+
+                if (response)
+                    showThanksModal('#thanksCheckPhoneModal');
+            });
+
+            request.fail(function( jqXHR, textStatus ) {
+                alert( "Request failed: " + textStatus );
+            });
+
+        } else return false;
+    });
+
+    // Обработка отправки формы С фотографиями комнаты
+    $('#setPhoto form').submit(function (e) {
+        e.preventDefault();
+
+        if (false) {
+            let data = Object.assign({}, STATE);
+
+            data.from = "Отправьте фото комнаты и питомца.";
+            delete data.callbackTime;
+
+            if (IS_DEBUGGING) {
+                console.log('Данные, отправляемые на сервер:', data);
+            }
+
+            let request = $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/todos/1', // !!!!!!!!!!!!!!! тестовый сервер
+                method: "GET", // !!!!!!!!!!!!!!! при реальном запросе поменять на POST
+                data: JSON.stringify(data),
+                dataType: "JSON"
+            });
+
+            request.done(response => {
+
+                // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
+                console.log(response);
+
+                if (response)
+                    showThanksModal('#thanksSendPhotos');
+            });
+
+            request.fail(function( jqXHR, textStatus ) {
+                alert( "Request failed: " + textStatus );
+            });
+
+        } else return false;
+    });
+
+    function showThanksModal(modalId) {
+        $(modalId).addClass('visible');
+        $('body').addClass('modal-open');
+    }
+
+    // Обработка клика по кнопке закрыть модальное окно Спасибо
+    $('.thanks-modal__close').on(
+        'click',
+        function () {
+            $(this).closest('.visible').removeClass('visible');
+            $('body').removeClass('modal-open');
+        }
     );
 
-    function buildSlider(slider, sliderId, path, countPic) {
-        let node = document.getElementById('sliderHousesWrapper');
-        let last;
-
-        for (let i = 1; i <= countPic; last = i++ === countPic) {
-            let slide = document.createElement('div'),
-                wrap = document.createElement('div'),
-                pic = document.createElement('div');
-
-            slide.classList.add('slider__slide');
-            slide.classList.add('swiper-slide');
-            wrap.classList.add('slider__image-wrap');
-            pic.classList.add('slider__image');
-            pic.style.backgroundImage = `url("${path}${i}.jpg"`;
-
-            wrap.append(pic);
-            slide.append(wrap);
-            node.append(slide);
-
-            if (last) slider.update();
+    // Обработка клика по пустой области вокруг модального окна Спасибо
+    $('.thanks-modal').on(
+        'click',
+        function () {
+            if ($(this).hasClass('visible')) {
+                $(this).removeClass('visible');
+                $('body').removeClass('modal-open');
+            }
         }
-    }
+    );
 });

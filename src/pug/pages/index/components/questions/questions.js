@@ -1,5 +1,9 @@
 import $ from "jquery";
 
+// Import Fancybox into this
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox.css";
+
 $(document).ready(function () {
     $('.question-controller')
         .toArray()
@@ -58,6 +62,7 @@ $(document).ready(function () {
 
                     // Сбрасываем предыдущий вопрос (только интерфейс)
                     $(id).find('input').prop('checked', false);
+                    $('label.open-comment').removeClass('open-comment');
 
                     // Обновляем прогресс бар
                     setProgress(pos);
@@ -123,7 +128,10 @@ $(document).ready(function () {
 
     function hideQuestion(el, timeout) {
         setTimeout(
-            () => $(el).addClass('hidden'),
+            () => {
+                $(el).addClass('hidden');
+                $('#header').addClass('blocked');
+            },
             timeout
         );
     }
@@ -163,7 +171,13 @@ $(document).ready(function () {
             () => {
                 $(id).removeClass('hidden');
 
-                if (id === '#loader') moveProgressPercents();
+                if (id === '#loader') {
+                    moveProgressPercents();
+
+                    $('#header')
+                        .removeClass('fixed visible')
+                        .addClass('blocked');
+                }
             },
             timeout
         );
@@ -171,7 +185,10 @@ $(document).ready(function () {
 
     function activeQuestion(id, timeout) {
         setTimeout(
-            () => $(id).addClass('active'),
+            () => {
+                $(id).addClass('active');
+                $('#header').removeClass('blocked');
+            },
             timeout
         )
     }
@@ -211,5 +228,71 @@ $(document).ready(function () {
         hideQuestion(loader, timeout);
         showQuestion('#getContact', timeout);
         activeQuestion('#getContact', timeout + 100);
+
+        setTimeout(() => $('#header').removeClass('blocked'), 1000);
+
+        // Собираем слайдера с примерами домиков
+        if (STATE['animal'][1] === 'Кошка.') {
+            switch(STATE['count'][1]) {
+                case 'У меня один любимец.':
+                    buildSlider('/img/slider/cat-single/pic',13);
+                    break;
+                case 'У меня два котика.':
+                case 'Три и более.':
+                    buildSlider('/img/slider/cat-more/pic',7);
+                    break;
+            }
+        } else {
+            switch(STATE['size'][1]) {
+                case 'Маленькая собака.':
+                    buildSlider('/img/slider/dog-small/pic',12);
+                    break;
+                case 'Среднего размера.':
+                    buildSlider('/img/slider/dog-medium/pic',10);
+                    break;
+                case 'Большая собака.':
+                    buildSlider('/img/slider/dog-large/pic',9);
+                    break;
+            }
+        }
+
+        function buildSlider(path, countPic) {
+            let node = document.getElementById('sliderHousesWrapper');
+            let last;
+
+            for (let i = 1; i <= countPic; last = i++ === countPic) {
+                let slide = document.createElement('div'),
+                    wrap = document.createElement('div'),
+                    pic = document.createElement('div');
+
+                slide.classList.add('slider__slide');
+                slide.classList.add('swiper-slide');
+                wrap.classList.add('slider__image-wrap');
+                pic.classList.add('slider__image');
+                pic.style.backgroundImage = `url("${path}${i}.jpg"`;
+
+                wrap.append(pic);
+                slide.append(wrap);
+                node.append(slide);
+
+                if (last) SLIDER_RESULT.update();
+            }
+        }
     }
+
+    // Галерея стилей интерьера
+    $('#apartmentRenovationStyle .zoom').on(
+        'click',
+        function (e) {
+            e.stopPropagation();
+            console.log($(e.target).next()[0].click())
+        }
+    );
+
+    // Start Fancybox gallery
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        Thumbs: false,
+        Toolbar: false,
+        closeButton: "inside",
+    });
 });

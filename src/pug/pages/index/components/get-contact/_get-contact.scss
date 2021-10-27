@@ -4,12 +4,13 @@
     margin-top: -11px;
     overflow: hidden;
     height: auto;
-    max-height: 0;
     opacity: 0;
-    transition: max-height 3s linear, opacity .3s linear;
+
+    @media (min-width: $md) {
+        margin-top: -70px;
+    }
 
     &.active {
-        max-height: 1500px;
         opacity: 1;
 
         .animation-el {
@@ -35,6 +36,16 @@
         height: 71px;
         transform: translateY(7px) scale(0.8) !important;
         transition-delay: .4s !important;
+
+        @media (min-width: $md) {
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: $lg) {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 53px;
+        }
     }
 
     &__caption {
@@ -45,6 +56,16 @@
         text-align: center;
         letter-spacing: -0.02em;
         transition-delay: .6s !important;
+
+        @media (min-width: $md) {
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        @media (min-width: $lg) {
+            font-size: 22px;
+
+        }
     }
 
     &__body {
@@ -56,6 +77,10 @@
         height: auto;
         margin-top: 25px;
         transition-delay: .8s !important;
+
+        @media (min-width: $md) {
+            margin-top: 60px;
+        }
     }
 
     &__title {
@@ -64,6 +89,12 @@
         line-height: 15px;
         text-align: center;
         margin-bottom: 15px;
+
+        @media (min-width: $md) {
+            width: 285px;
+            font-size: 16px;
+            line-height: 20px;
+        }
     }
 
     &__subtitle {
@@ -72,6 +103,14 @@
         line-height: 15px;
         text-align: center;
         margin-bottom: 25px;
+
+        @media (min-width: $md) {
+            width: 480px;
+            font-size: 16px;
+            line-height: 20px;
+            margin-top: 25px;
+            margin-bottom: 60px;
+        }
     }
 
     &__form {
@@ -81,6 +120,18 @@
         height: auto;
 
         input:checked ~ .icon .icon-body {
+            fill: $color-font-secondary;
+        }
+
+        input:checked ~ .icon_whatsapp .icon-background {
+            fill: url("#whatsappIconLinearGradient");
+        }
+
+        input:checked ~ .icon_telegram .icon-background {
+            fill: url("#teleIconLinearGradient");
+        }
+
+        input:checked ~ .icon_phone .icon-background {
             fill: $color-accent;
         }
 
@@ -111,6 +162,7 @@
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
+                cursor: pointer;
             }
 
             .icon {
@@ -138,6 +190,11 @@
                 height: 25px;
                 position: relative;
 
+                @media (min-width: $md) {
+                    width: 32px;
+                    height: 32px;
+                }
+
                 &::before {
                     background-image: url("/img/check-passive-icon.svg");
                 }
@@ -146,7 +203,6 @@
                 }
             }
         }
-
     }
 
     &__pic-caption {
@@ -156,6 +212,10 @@
         line-height: 15px;
         text-align: center;
         margin-bottom: 5px;
+
+        @media (min-width: $lg) {
+            display: none;
+        }
     }
 
     &__pic-text {
@@ -166,17 +226,52 @@
         line-height: 15px;
         text-align: center;
         margin-bottom: 20px;
+
+        @media (min-width: $lg) {
+            display: none;
+        }
     }
 
     &__image {
         display: block;
         margin-bottom: 20px;
+
+        @media (min-width: $md) {
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: $lg) {
+            position: absolute;
+            left: 50%;
+            margin-left: -552px;
+            top: -74px;
+        }
     }
 
     &__banner {
         width: 100%;
         max-width: 1092px;
         margin: 0 auto 25px;
+
+        @media (min-width: $md) {
+            margin-top: 25px;
+            margin-bottom: 50px;
+        }
+
+        @media (min-width: $lg) {
+
+            width: 960px;
+            padding: 50px 0;
+            border-radius: 10px;
+            background: $color-back;
+            box-shadow: 0 7px 33px rgba(0, 0, 0, 0.25);
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+
+        @media (min-width: $xl) {
+            width: 1092px;
+        }
 
         &.animation {
             animation: banner 1.3s linear 0s infinite normal forwards;
@@ -188,6 +283,10 @@
             align-items: center;
             background: $color-font-primary;
             max-width: 564px;
+
+            @media (min-width: $md) {
+                border-radius: 10px;
+            }
         }
 
         .pic {
@@ -212,7 +311,18 @@
             line-height: 18px;
             color: $color-font-secondary;
             padding-right: 20px;
+
+            @media (min-width: $lg) {
+                font-size: 19px;
+                line-height: 23px;
+            }
         }
+    }
+}
+
+.get-contact__image + .get-contact__form {
+    @media (min-width: $lg) {
+        display: none;
     }
 }
 

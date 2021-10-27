@@ -1,4 +1,4 @@
-form.get-contact__form(action="", method="GET")
+form.get-contact__form(action="" method="GET" data-form-type="connectType")
     ul.get-contact__connects
         li
             label
@@ -6,7 +6,7 @@ form.get-contact__form(action="", method="GET")
                     type="radio"
                     name="connect"
                     value="WhatsApp")
-                span.icon
+                span.icon.icon_whatsapp
                     include ../../../../../img/i-whatsapp.svg
                 span.caption WhatsApp
                 span.checker
@@ -17,7 +17,7 @@ form.get-contact__form(action="", method="GET")
                     type="radio"
                     name="connect"
                     value="Telegram")
-                span.icon
+                span.icon.icon_telegram
                     include ../../../../../img/i-tele.svg
                 span.caption Telegram
                 span.checker
@@ -28,18 +28,16 @@ form.get-contact__form(action="", method="GET")
                     type="radio"
                     name="connect"
                     value="Phone")
-                span.icon
+                span.icon.icon_phone
                     include ../../../../../img/i-phone.svg
                 span.caption
                     | Перезвоните мне
                     | !{' '}
                     | Есть вопрос
                 span.checker
-
     label
-        input(
-            type="text"
+        input(type="text"
             name="phone"
-            id="firstConnectPhone"
+            class="phone-controller"
             placeholder="Введите номер телефона")
     button.btn.btn_inactive(type="submit") получить результат

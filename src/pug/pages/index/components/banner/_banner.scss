@@ -6,6 +6,22 @@
     height: 192px;
     position: relative;
 
+    @media (min-width: $lg) {
+        height: 380px;
+        border-bottom: none;
+        border-top: none;
+
+        &::before, &::after {
+            content: "";
+            display: block;
+            width: 50%;
+            height: 1px;
+            left: 0;
+            transform: translateX(100%);
+            background: linear-gradient(90deg, $color-back 0%, $color-back-line 100%);
+        }
+    }
+
     .container {
         height: 100%;
     }
@@ -20,11 +36,20 @@
         background: url("/img/banner-back.jpg") top right no-repeat;
         background-size: auto 101%;
         z-index: 0;
+
+        @media (min-width: $lg) {
+            margin-right: 37px;
+        }
     }
 
     &__list {
         position: relative;
         top: 75px;
+
+        @media (min-width: $xl) {
+            display: flex;
+            top: 157px;
+        }
 
         li {
             display: block;
@@ -34,7 +59,19 @@
             font-weight: 500;
             font-size: 10px;
             line-height: 12px;
-            width: 27%;
+            width: 40%;
+
+            @media (min-width: $md) {
+                padding-left: 23px;
+                font-size: 16px;
+                line-height: 20px;
+                width: auto;
+            }
+
+            @media (min-width: $xl) {
+                width: 232px;
+                margin-right: 31px;
+            }
 
             &::before {
                 content: "";
@@ -45,6 +82,12 @@
                 left: 0;
                 top: 4px;
                 background-color: #3D3D3D;
+
+                @media (min-width: $md) {
+                    width: 8px;
+                    height: 8px;
+                    top: 7px;
+                }
             }
         }
     }

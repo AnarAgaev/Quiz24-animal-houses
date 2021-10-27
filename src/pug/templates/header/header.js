@@ -5,27 +5,29 @@ $(document).ready(() => {
         scrollDirection = 0;
 
     $(window).scroll(() => {
-        let scrollTop = $(document).scrollTop(),
-            direction = scrollTop > scrollDirection;
+        if (!$('#header').hasClass('blocked')) {
+            let scrollTop = $(document).scrollTop(),
+                direction = scrollTop > scrollDirection;
 
-        scrollDirection = scrollTop;
+            scrollDirection = scrollTop;
 
-        if (scrollTop > 100) {
-            $('#header').addClass('fixed');
-        } else {
-            $('#header').removeClass('fixed');
-        }
+            if (scrollTop > 100) {
+                $('#header').addClass('fixed');
+            } else {
+                $('#header').removeClass('fixed');
+            }
 
-        if (scrollTop < 400) {
-            $('#header').removeClass('visible');
-        }
+            if (scrollTop < 400) {
+                $('#header').removeClass('visible');
+            }
 
-        if (direction) {
-            scrollCounter = scrollTop;
-            $('#header').removeClass('visible');
-        } else {
-            if (scrollTop < scrollCounter - 100) {
-                $('#header').addClass('visible');
+            if (direction) {
+                scrollCounter = scrollTop;
+                $('#header').removeClass('visible');
+            } else {
+                if (scrollTop < scrollCounter - 300) {
+                    $('#header').addClass('visible');
+                }
             }
         }
     });

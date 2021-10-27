@@ -7,6 +7,7 @@ import './pug/pages/index/components/questions/questions';
 import './pug/pages/index/components/consultation-modal/consultation-modal';
 import './pug/pages/index/components/get-contact/get-contact';
 import './pug/pages/index/components/results/results';
+import './pug/pages/index/components/thanks-modals/thanks-modals';
 
 // Include vendor styles
 import 'normalize.css';

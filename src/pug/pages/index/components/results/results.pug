@@ -1,5 +1,5 @@
 //- active hidden
-.results.active#results
+.results.hidden#results
     .results__banner.animation
         .container
             span.pic
@@ -16,27 +16,30 @@
                     | “Домик в Доме”
         .results__header-msg
             span Система автоматически подобрала варианты домиков, подходящие для вашего питомца
-            a(href="#place_scroll") Вы найдете их ниже
+            a(href="#place_scroll")#goToSliderHouses Вы найдете их ниже
 
-    .results__pesent
-        form(action="/" method="GET")
-            h4.results__pesent-title
+    .results__present#present
+        form(action="" method="GET" data-form-type="singlePhone")
+            h4.results__present-title
                 | А пока не забудьте
                 br
                 | про подарок
-            .results__pesent-wrap
-                img.results__pesent-photo(src="/img/results-form-pic.jpg" alt="")
-                span.results__pesent-subtitle Гравировка имени вашего питомца на домике
-            span.results__pesent-content Подарок закреплен за номером телефона. Если вы указали номер неправильно, сейчас можете его изменить
+            .results__present-wrap
+                img.results__present-photo(src="/img/results-form-pic.jpg" alt="")
+                span.results__present-subtitle Гравировка имени вашего питомца на домике
+            span.results__present-content
+                | Подарок закреплен за номером телефона.
+                br
+                | !{' '}
+                | Если вы указали номер неправильно, сейчас можете его изменить
             label
-                input(
-                    type="text"
+                input(type="text"
                     name="phone"
-                    id="presentPhone"
+                    class="phone-controller"
                     placeholder="Введите номер телефона")
             button.btn.btn_inactive(type="submit") изменить номер
 
-    .results__slider
+    .results__slider#slicerHouses
         .container
             h5.results__slider-title Дизайнерские домики
             span.results__slider-subtitle
@@ -50,25 +53,25 @@
             .swiper-wrapper#sliderHousesWrapper
         .swiper-pagination#sliderHousesPagination
 
-    .results__consultation
+    .results__consultation#setPhoto
         .container
-            .results__consultation__title
-                | Получите консультацию
-                br
-                | профессионального
-                br
-                | дизайнера - кинолога
-            .results__consultation__subtitle Наш дизайнер-кинолог сможет предложить такое решение, которое идеально подойдет под характер вашего питомца и впишется в ваш интерьер.
-            .results__consultation__direction Для этого
-            form.results__consultation__form(action="" method="GET")
+            .results__consultation__content
+                .results__consultation__title
+                    | Получите консультацию
+                    br
+                    | профессионального
+                    br
+                    | дизайнера - кинолога
+                .results__consultation__subtitle Наш дизайнер-кинолог сможет предложить такое решение, которое идеально подойдет под характер вашего питомца и впишется в ваш интерьер.
+                .results__consultation__direction Для этого
+            form.results__consultation__form(action="" method="GET" data-form-type="setPhoto")
                 .header
                     img(src="/img/icon-person.jpg")
                     span Отправьте фото комнаты, где будет стоять домик, и фото питомца
                 label
-                    input(
-                        type="text"
+                    input(type="text"
                         name="phone"
-                        id="consultationPhone"
+                        class="phone-controller"
                         placeholder="Введите номер телефона")
                 .actions
                     button.show-camera
@@ -82,7 +85,10 @@
 
     .results__production
         .container
-            h5.results__slider-title Домики изготавливаем на собственном производстве
+            h5.results__slider-title
+                | Домики изготавливаем
+                br
+                | на собственном производстве
             span.results__slider-subtitle из ценных пород дерева - бука и дуба
 
     span.results__slider-war свайпай
@@ -97,52 +103,58 @@
 
     .results__paint
         .container
-            h5.results__slider-title Окрашиваем безвредными лакокрасочными материалами
-            span.results__slider-subtitle Sayerlack
+            .results__paint-header
+                h5.results__slider-title Окрашиваем безвредными лакокрасочными материалами
+                span.results__slider-subtitle Sayerlack
             img.results__paint-pic(src="/img/result-paint.jpg" alt="")
 
-    .results__quality
-        .container
-            h4.results__quality-title Европейское качество на российском производстве
-            ul
-                li
-                    strong Необычные архитектурные формы домиков
-                    | !{' '}
-                    span применяем технологию гнутых элементов в деревообработке. Сделаем для питомца домик любой формы
-                li
-                    strong Подушки из натуральных материалов
+    .results__footer
+        .results__quality
+            .container
+                h4.results__quality-title
+                    | Европейское качество
                     br
-                    a(href="#") читать дальше
-                li
-                    strong Не царапает пол
-                    | !{' '}
-                    span На ножках есть резиновые накладки
-                li
-                    strong Подходят сразу для трех кошачьих дел:
-                    | !{' '}
-                    span сна, наблюдения и заточки когтей
+                    | на российском производстве
+                ul
+                    li
+                        strong Необычные архитектурные формы домиков
+                        | !{' '}
+                        span
+                            | применяем технологию гнутых элементов в деревообработке.
+                            br
+                            | Сделаем для питомца домик любой формы
+                    li
+                        strong Подушки из натуральных материалов
+                        br
+                        a(href="#") читать дальше
+                    li
+                        strong Не царапает пол
+                        | !{' '}
+                        span На ножках есть резиновые накладки
+                    li
+                        strong Подходят сразу для трех кошачьих дел:
+                        | !{' '}
+                        span сна, наблюдения и заточки когтей
 
-    .results__callback
-        .container
-            h4.results__callback-title
-                | Дождитесь звонка дизайнера
-                br
-                | или проконсультируйтесь
-                br
-                | прямо сейчас
+        .results__callback#checkPhone
+            .container
+                h4.results__callback-title
+                    | Дождитесь звонка дизайнера
+                    br
+                    | или проконсультируйтесь
+                    br
+                    | прямо сейчас
 
-            form.results__callback-form(action="/" method="GET")
-                h4 Проверьте номер телефона
-                label
-                    input(
-                        type="text"
-                        name="phone"
-                        id="callbackPhone"
-                        placeholder="Введите номер телефона")
-                label
-                    input(
-                        type="text"
-                        name="time"
-                        id="callbackTime"
-                        placeholder="Укажите удобное время")
-                button.btn.btn_inactive(type="submit") проконсультироваться
+                form.results__callback-form(action="" method="GET" data-form-type="callbackTime")
+                    h4 Проверьте номер телефона
+                    label
+                        input(type="text"
+                            name="phone"
+                            class="phone-controller"
+                            placeholder="Введите номер телефона")
+                    label
+                        input(type="text"
+                            name="time"
+                            class="callback-time-controller"
+                            placeholder="Укажите удобное время")
+                    button.btn.btn_inactive(type="submit") проконсультироваться
