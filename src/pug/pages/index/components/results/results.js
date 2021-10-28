@@ -78,7 +78,7 @@ $(document).ready(() => {
 
             let request = $.ajax({
                 method: 'post',
-                url: 'http://quiz24/send-post.php',
+                url: 'https://quiz24.ru/portfolio/houses_for_pets/send-post.php',
                 data: { json: JSON.stringify(data) },
                 dataType: 'json'
             });
@@ -117,7 +117,7 @@ $(document).ready(() => {
 
             let request = $.ajax({
                 method: 'post',
-                url: 'http://quiz24/send-post.php',
+                url: 'https://quiz24.ru/portfolio/houses_for_pets/send-post.php',
                 data: { json: JSON.stringify(data) },
                 dataType: 'json'
             });
@@ -150,7 +150,7 @@ $(document).ready(() => {
 
             let request = $.ajax({
                 method: 'post',
-                url: 'http://quiz24/send-post.php',
+                url: 'https://quiz24.ru/portfolio/houses_for_pets/send-post.php',
                 data: { json: JSON.stringify(data) },
                 dataType: 'json'
             });
