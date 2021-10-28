@@ -220,6 +220,19 @@ $(document).ready(function () {
         showQuestion('#getContact', timeout);
         activeQuestion('#getContact', timeout + 100);
 
+        setTimeout(
+            () => {
+                let top = $('#progressBar').offset().top,
+                    offset = $(window).width() < 768 ? 30 : 60;
+
+                $('body,html').animate(
+                    { scrollTop: top - offset},
+                    500
+                );
+            },
+            300
+        );
+
         // Собираем слайдера с примерами домиков
         if (STATE['animal'][1] === 'Кошка') {
             switch(STATE['count'][1]) {
