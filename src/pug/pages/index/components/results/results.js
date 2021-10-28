@@ -64,7 +64,10 @@ $(document).ready(() => {
     $('#present form').submit(function (e) {
         e.preventDefault();
 
-        if (validatePhone(STATE.phone)) {
+        let submitBtn = $(e.target).find('[type="submit"]'),
+            isValidBtn = !$(submitBtn).hasClass('btn_inactive');
+
+        if (validatePhone(STATE.phone) && isValidBtn) {
             let data = Object.assign({}, STATE);
             data.from = "Изменить номер телефона";
             data.id = '#changePhone';
@@ -84,6 +87,7 @@ $(document).ready(() => {
                 if (IS_DEBUGGING) console.log(response);
                 if (!response.error) {
                     showThanksModal('#thanksPresentModal');
+                    $(submitBtn).addClass('btn_inactive');
                 }
             });
 
@@ -97,10 +101,15 @@ $(document).ready(() => {
     $('#checkPhone form').submit(function (e) {
         e.preventDefault();
 
-        if (validatePhone(STATE.phone) && STATE.callbackTime !== undefined) {
+        // Валидаци удобного времени звонка STATE.callbackTime !== undefined
+        if (validatePhone(STATE.phone)) {
             let data = Object.assign({}, STATE);
             data.from = 'Проверьте номер телефона';
             data.id = '#checkPhone';
+
+            if (!STATE.callbackTime) {
+                data.callbackTime = "Не указано";
+            }
 
             if (IS_DEBUGGING) {
                 console.log('Данные, отправляемые на сервер:', data);
@@ -130,7 +139,7 @@ $(document).ready(() => {
     $('#setPhoto form').submit(function (e) {
         e.preventDefault();
 
-        if (true) {
+        if (false) {
             let data = Object.assign({}, STATE);
             data.from = 'Отправьте фото комнаты и питомца';
             data.id = '#sendPhoto';

@@ -522,9 +522,9 @@
                     margin-right: 4px;
                 }
 
-                .add-photo {
-                    margin-left: 4px;
-                }
+                //.add-photo {
+                //    margin-left: 4px;
+                //}
 
                 &__preview {
 
@@ -944,6 +944,7 @@
     }
 
     &__image {
+        display: block;
         position: relative;
         top: 10px;
         height: 220px;

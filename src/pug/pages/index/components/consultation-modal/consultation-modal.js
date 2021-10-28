@@ -52,11 +52,16 @@ $(document).ready(() => {
     $('#consultationModal form').submit(function (e) {
         e.preventDefault();
 
-        if (validatePhone(STATE.phone) && STATE.callbackTime !== undefined) {
+        // Валидаци удобного времени звонка STATE.callbackTime !== undefined
+        if (validatePhone(STATE.phone)) {
 
             let data = Object.assign({}, STATE);
             data.from = "Быстрая консультация";
             data.id = '#fastConsultation';
+
+            if (!STATE.callbackTime) {
+                data.callbackTime = "Не указано";
+            }
 
             if (IS_DEBUGGING) {
                 console.log('Данные, отправляемые на сервер:', data);

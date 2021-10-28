@@ -77,6 +77,7 @@ $(document).ready(() => {
             function () {
                 STATE.callbackTime = $(this).val();
                 checkForms(this);
+                checkCallbackTimeController();
             }
         );
 
@@ -123,6 +124,7 @@ $(document).ready(() => {
                 let maskNum = $(this).data('maskNum');
                 STATE['phone'] = PHONE_MASKS[maskNum].unmaskedValue;
                 checkForms(this);
+                checkPhoneController();
             }
         );
 
@@ -144,16 +146,16 @@ $(document).ready(() => {
 
         function checkFormConnectType() {
             let submitsConnectType = $('form[data-form-type="connectType"] [type="submit"]'),
-                submitsSinglePhone = $('form[data-form-type="singlePhone"] [type="submit"]'),
+                submitsCallbackTime = $('form[data-form-type="callbackTime"] [type="submit"]'),
                 phoneIsValid = validatePhone(STATE.phone),
                 connectIsValid = STATE.connect !== undefined;
 
             if (phoneIsValid && connectIsValid) {
                 submitsConnectType.removeClass('btn_inactive');
-                submitsSinglePhone.removeClass('btn_inactive');
+                submitsCallbackTime.removeClass('btn_inactive');
             } else {
                 submitsConnectType.addClass('btn_inactive');
-                submitsSinglePhone.addClass('btn_inactive');
+                submitsCallbackTime.addClass('btn_inactive');
             }
         }
 
@@ -173,7 +175,7 @@ $(document).ready(() => {
                 phoneIsValid = validatePhone(STATE.phone),
                 connectIsValid = STATE.callbackTime !== '';
 
-            if (phoneIsValid && connectIsValid) {
+            if (phoneIsValid) {
                 submits.removeClass('btn_inactive');
             } else {
                 submits.addClass('btn_inactive');
@@ -190,6 +192,26 @@ $(document).ready(() => {
             } else {
                 submits.addClass('btn_inactive');
             }
+        }
+    }
+
+    function checkPhoneController() {
+        let ctrls = $('[name="phone"]');
+
+        if (validatePhone(STATE['phone'])) {
+            $(ctrls).addClass('valid');
+        } else {
+            $(ctrls).removeClass('valid');
+        }
+    }
+
+    function checkCallbackTimeController() {
+        let ctrls = $('[name="time"]');
+
+        if (STATE.callbackTime) {
+            $(ctrls).addClass('valid');
+        } else {
+            $(ctrls).removeClass('valid');
         }
     }
 });

@@ -235,48 +235,53 @@ $(document).ready(function () {
         if (STATE['animal'][1] === 'Кошка') {
             switch(STATE['count'][1]) {
                 case 'У меня один любимец':
-                    buildSlider('/img/slider/cat-single/pic',13);
+                    buildSlider('cat-single',13);
                     break;
                 case 'У меня два котика':
                 case 'Три и более':
-                    buildSlider('/img/slider/cat-more/pic',7);
+                    buildSlider('cat-more',7);
                     break;
             }
         } else {
             switch(STATE['size'][1]) {
                 case 'Маленькая собака':
-                    buildSlider('/img/slider/dog-small/pic',12);
+                    buildSlider('dog-small',12);
                     break;
                 case 'Среднего размера':
-                    buildSlider('/img/slider/dog-medium/pic',10);
+                    buildSlider('dog-medium',10);
                     break;
                 case 'Большая собака':
-                    buildSlider('/img/slider/dog-large/pic',9);
+                    buildSlider('dog-large',9);
                     break;
             }
         }
+    }
 
-        function buildSlider(path, countPic) {
-            let node = document.getElementById('sliderHousesWrapper');
-            let last;
+    function buildSlider(path, countPic) {
+        let node = document.getElementById('sliderHousesWrapper');
+        let last;
 
-            for (let i = 1; i <= countPic; last = i++ === countPic) {
-                let slide = document.createElement('div'),
-                    wrap = document.createElement('div'),
-                    pic = document.createElement('div');
+        for (let i = 1; i <= countPic; last = i++ === countPic) {
+            let slide = document.createElement('div'),
+                wrap = document.createElement('div'),
+                pic = document.createElement('div');
 
-                slide.classList.add('slider__slide');
-                slide.classList.add('swiper-slide');
-                wrap.classList.add('slider__image-wrap');
-                pic.classList.add('slider__image');
-                pic.style.backgroundImage = `url("${path}${i}.jpg"`;
+            slide.classList.add('slider__slide');
+            slide.classList.add('swiper-slide');
+            wrap.classList.add('slider__image-wrap');
+            pic.classList.add('slider__image');
+            pic.style.backgroundImage = `url("/img/slider/${path}/pic${i}.jpg"`;
 
-                wrap.append(pic);
-                slide.append(wrap);
-                node.append(slide);
+            pic.addEventListener('click', function () {
+                let index = i - 1;
+                $('#' + path).find('a')[index].click();
+            });
 
-                if (last) SLIDER_RESULT.update();
-            }
+            wrap.append(pic);
+            slide.append(wrap);
+            node.append(slide);
+
+            if (last) SLIDER_RESULT.update();
         }
     }
 
@@ -295,4 +300,20 @@ $(document).ready(function () {
         Toolbar: false,
         closeButton: "inside",
     });
+
+    let arrFancyBoxes = [
+      'gallery-cat-single',
+      'gallery-cat-more',
+      'gallery-dog-small',
+      'gallery-dog-medium',
+      'gallery-dog-large',
+    ];
+
+    for (let i = 0; i < arrFancyBoxes.length; i++) {
+        Fancybox.bind('[data-fancybox="' + arrFancyBoxes[i] + '"]', {
+            Thumbs: false,
+            Toolbar: false,
+            closeButton: "inside",
+        });
+    }
 });

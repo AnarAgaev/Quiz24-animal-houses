@@ -1,6 +1,6 @@
 //- active hidden
 .results.hidden#results
-    .results__banner.animation
+    .results__banner
         .container
             span.pic
             span.txt Подходящие домики для вашего питомца
@@ -48,6 +48,24 @@
                 | и вашего питомца
 
     span.results__slider-war свайпай
+
+    //- Fancy box galleries
+    #cat-single.unvisible
+        each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+            a(href="/img/slider/cat-single/pic" + val + ".jpg" data-fancybox="gallery-cat-single")
+    #cat-more.unvisible
+        each val in [1, 2, 3, 4, 5, 6, 7]
+            a(href="/img/slider/cat-more/pic" + val + ".jpg" data-fancybox="gallery-cat-more")
+    #dog-small.unvisible
+        each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            a(href="/img/slider/dog-small/pic" + val + ".jpg" data-fancybox="gallery-dog-small")
+    #dog-medium.unvisible
+        each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            a(href="/img/slider/dog-medium/pic" + val + ".jpg" data-fancybox="gallery-dog-medium")
+    #dog-large.unvisible
+        each val in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            a(href="/img/slider/dog-large/pic" + val + ".jpg" data-fancybox="gallery-dog-large")
+
     .slider#sliderHouses
         .swiper
             .swiper-wrapper#sliderHousesWrapper
@@ -74,12 +92,12 @@
                         class="phone-controller"
                         placeholder="Введите номер телефона")
                 .actions
-                    button.show-camera
-                        img(src="/img/icon-camera.svg" alt="")
-                        span Камера
+                    //- button.show-camera
+                    //-     img(src="/img/icon-camera.svg" alt="")
+                    //-     span Камера
                     button.add-photo
                         img(src="/img/icon-picture.svg" alt="")
-                        span Фото/видео
+                        span Добавить фото/видео
                     .actions__preview
                 button.btn.btn_inactive(type="submit") ОТПРАВИТЬ ФОТО
 
