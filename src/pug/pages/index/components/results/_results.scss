@@ -7,14 +7,10 @@
     opacity: 0;
     transition: max-height .6s ease-out, opacity .6s ease-out;
     padding-top: 30px;
-    margin-top: -30px;
+    margin-top: -20px;
 
     @media (min-width: $md) {
-        margin-top: -50px;
-    }
-
-    @media (min-width: $lg) {
-        margin-top: -80px;
+        margin-top: 0;
     }
 
     &.active {

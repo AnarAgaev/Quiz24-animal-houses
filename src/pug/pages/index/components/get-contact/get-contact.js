@@ -40,26 +40,15 @@ $(document).ready(() => {
     );
 
     function changeSlide() {
-        $('#getContact').removeClass('active');
-        $('#results').removeClass('hidden');
+        $('#results').removeClass('hidden').addClass('active');
+        $('#getContact').addClass('collapsed');
 
-        // Показываем секцию с результатми
-        setTimeout(
-            () => {
-                $('#getContact').addClass('hidden');
-                $('#results').addClass('active');
-            },
-            100
+        let top = $('#progressBar').offset().top,
+            offset = $(window).width() < 768 ? 30 : 60;
+
+        $('body,html').animate(
+            { scrollTop: top - offset},
+            900
         );
-
-        setTimeout(
-            () => {
-                $('body,html').animate(
-                    { scrollTop: $('#results').offset().top },
-                    700
-                );
-            },
-            200
-        )
     }
 });

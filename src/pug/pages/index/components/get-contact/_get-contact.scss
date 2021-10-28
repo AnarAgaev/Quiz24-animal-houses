@@ -5,9 +5,16 @@
     overflow: hidden;
     height: auto;
     opacity: 0;
+    max-height: 2000px;
 
     @media (min-width: $md) {
         margin-top: -70px;
+    }
+
+    &.collapsed {
+        opacity: 0 !important;
+        max-height: 0 !important;
+        transition: max-height .9s ease-out, opacity .4s linear;
     }
 
     &.active {
