@@ -1,12 +1,12 @@
 //- active hidden
-.question.hidden#start
+.question.active#start
     .question__title Кто ваш питомец?
     .question__content
             label.question__pic-card.question-controller
                 input.unvisible(
                     type="radio"
                     name="animal"
-                    value="Кошка."
+                    value="Кошка"
                     data-next-question-id="#catQuestion2"
                     data-next-progress-position="2"
                     data-next-banner-img="catQuestions-bnr2.jpg")
@@ -16,7 +16,7 @@
                 input.unvisible(
                     type="radio"
                     name="animal"
-                    value="Собака."
+                    value="Собака"
                     data-next-question-id="#dogQuestion2"
                     data-next-progress-position="2"
                     data-next-banner-img="dogQuestions-bnr2.jpg")

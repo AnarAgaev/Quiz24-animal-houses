@@ -9,6 +9,11 @@
     outline: none !important;
 }
 
+html {
+    -webkit-text-size-adjust: none;
+    touch-action: manipulation;
+}
+
 body, html {
     min-height: 100vh;
 }

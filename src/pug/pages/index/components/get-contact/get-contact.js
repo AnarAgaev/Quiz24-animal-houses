@@ -11,37 +11,64 @@ $(document).ready(() => {
                 connectIsValid = STATE.connect !== undefined;
 
             if (phoneIsValid && connectIsValid) {
-                $('#getContact').removeClass('active');
-                $('#results').removeClass('hidden');
 
-                $('#header')
-                    .removeClass('fixed visible')
-                    .addClass('blocked');
+                let data = Object.assign({}, STATE);
+                data.from = 'Форма захвата контактов';
+                data.id = '#getContact';
 
-                // Показываем секцию с результатми
-                setTimeout(
-                    () => {
-                        $('#getContact').addClass('hidden');
-                        $('#results').addClass('active');
-                    },
-                    100
-                );
+                if (IS_DEBUGGING) {
+                    console.log('Данные, отправляемые на сервер:', data);
+                }
 
-                setTimeout(
-                    () => {
-                        $('body,html').animate(
-                            { scrollTop: $('#results').offset().top },
-                            700
-                        );
-                    },
-                    200
-                )
+                let request = $.ajax({
+                    method: 'post',
+                    url: 'http://quiz24/send-post.php',
+                    data: { json: JSON.stringify(data) },
+                    dataType: 'json'
+                });
 
-                setTimeout(
-                    () => $('#header').removeClass('blocked'),
-                    1000
-                );
+                request.done(response => {
+                    if (IS_DEBUGGING) console.log(response);
+                    if (!response.error) changeSlide();
+                });
+
+                request.fail(function( jqXHR, textStatus ) {
+                    console.log("Request failed: " + jqXHR + " --- " + textStatus);
+                });
             }
         }
     );
+
+    function changeSlide() {
+        $('#getContact').removeClass('active');
+        $('#results').removeClass('hidden');
+
+        $('#header')
+            .removeClass('fixed visible')
+            .addClass('blocked');
+
+        // Показываем секцию с результатми
+        setTimeout(
+            () => {
+                $('#getContact').addClass('hidden');
+                $('#results').addClass('active');
+            },
+            100
+        );
+
+        setTimeout(
+            () => {
+                $('body,html').animate(
+                    { scrollTop: $('#results').offset().top },
+                    700
+                );
+            },
+            200
+        )
+
+        setTimeout(
+            () => $('#header').removeClass('blocked'),
+            1000
+        );
+    }
 });

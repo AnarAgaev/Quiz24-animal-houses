@@ -141,20 +141,20 @@ $(document).ready(function () {
         if (id === '#sleepingInBad') {
             let pic = $('#sleepingInBad [data-next-banner-img]');
 
-            if (STATE['animal'][1] === 'Кошка.') {
+            if (STATE['animal'][1] === 'Кошка') {
                 pic.data('nextBannerImg', 'renovation-question-cat.jpg');
 
             } else {
                 switch(STATE['size'][1]) {
-                    case 'Маленькая собака.':
+                    case 'Маленькая собака':
                         pic.data('nextBannerImg', 'renovation-question-small-dog.jpg');
                         break;
 
-                    case 'Среднего размера.':
+                    case 'Среднего размера':
                         pic.data('nextBannerImg', 'renovation-question-medium-dog.jpg');
                         break;
 
-                    case 'Большая собака.':
+                    case 'Большая собака':
                         pic.data('nextBannerImg', 'renovation-question-large-dog.jpg');
                         break;
                 }
@@ -232,25 +232,25 @@ $(document).ready(function () {
         setTimeout(() => $('#header').removeClass('blocked'), 1000);
 
         // Собираем слайдера с примерами домиков
-        if (STATE['animal'][1] === 'Кошка.') {
+        if (STATE['animal'][1] === 'Кошка') {
             switch(STATE['count'][1]) {
-                case 'У меня один любимец.':
+                case 'У меня один любимец':
                     buildSlider('/img/slider/cat-single/pic',13);
                     break;
-                case 'У меня два котика.':
-                case 'Три и более.':
+                case 'У меня два котика':
+                case 'Три и более':
                     buildSlider('/img/slider/cat-more/pic',7);
                     break;
             }
         } else {
             switch(STATE['size'][1]) {
-                case 'Маленькая собака.':
+                case 'Маленькая собака':
                     buildSlider('/img/slider/dog-small/pic',12);
                     break;
-                case 'Среднего размера.':
+                case 'Среднего размера':
                     buildSlider('/img/slider/dog-medium/pic',10);
                     break;
-                case 'Большая собака.':
+                case 'Большая собака':
                     buildSlider('/img/slider/dog-large/pic',9);
                     break;
             }

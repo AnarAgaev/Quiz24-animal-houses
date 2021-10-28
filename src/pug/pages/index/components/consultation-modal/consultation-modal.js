@@ -3,7 +3,7 @@ import IMask from 'imask';
 
 $(document).ready(() => {
     // Показываем модальное окно
-    $('#consultationShowBtn').click(showConsultationModal);
+    $('.consultation-show-btn').click(showConsultationModal);
 
     // Скрываем модальное окно
     $('.consultation-modal__close')
@@ -53,31 +53,25 @@ $(document).ready(() => {
         e.preventDefault();
 
         if (validatePhone(STATE.phone) && STATE.callbackTime !== undefined) {
+
             let data = Object.assign({}, STATE);
-
             data.from = "Быстрая консультация";
-
-            if (!STATE.callbackTime) {
-                data.callbackTime = "Удобное время для звонка не указано.";
-            }
+            data.id = '#fastConsultation';
 
             if (IS_DEBUGGING) {
                 console.log('Данные, отправляемые на сервер:', data);
             }
 
             let request = $.ajax({
-                url: 'https://jsonplaceholder.typicode.com/todos/1', // !!!!!!!!!!!!!!! тестовый сервер
-                method: "GET", // !!!!!!!!!!!!!!! при реальном запросе поменять на POST
-                data: JSON.stringify(data),
-                dataType: "JSON"
+                method: 'post',
+                url: 'http://quiz24/send-post.php',
+                data: { json: JSON.stringify(data) },
+                dataType: 'json'
             });
 
             request.done(response => {
-
-                // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
-                console.log(response);
-
-                if (response) {
+                if (IS_DEBUGGING) console.log(response);
+                if (!response.error) {
                     $('#consultationModalDialog').addClass('invisible');
 
                     setTimeout(
@@ -96,9 +90,8 @@ $(document).ready(() => {
             });
 
             request.fail(function( jqXHR, textStatus ) {
-                alert( "Request failed: " + textStatus );
+                console.log("Request failed: " + jqXHR + " --- " + textStatus);
             });
-
         } else return false;
     });
 });

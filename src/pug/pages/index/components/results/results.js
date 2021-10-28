@@ -66,34 +66,30 @@ $(document).ready(() => {
 
         if (validatePhone(STATE.phone)) {
             let data = Object.assign({}, STATE);
-
-            data.from = "Изменить номер телефона.";
-            delete data.callbackTime;
+            data.from = "Изменить номер телефона";
+            data.id = '#changePhone';
 
             if (IS_DEBUGGING) {
                 console.log('Данные, отправляемые на сервер:', data);
             }
 
             let request = $.ajax({
-                url: 'https://jsonplaceholder.typicode.com/todos/1', // !!!!!!!!!!!!!!! тестовый сервер
-                method: "GET", // !!!!!!!!!!!!!!! при реальном запросе поменять на POST
-                data: JSON.stringify(data),
-                dataType: "JSON"
+                method: 'post',
+                url: 'http://quiz24/send-post.php',
+                data: { json: JSON.stringify(data) },
+                dataType: 'json'
             });
 
             request.done(response => {
-
-                // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
-                console.log(response);
-
-                if (response)
+                if (IS_DEBUGGING) console.log(response);
+                if (!response.error) {
                     showThanksModal('#thanksPresentModal');
+                }
             });
 
             request.fail(function( jqXHR, textStatus ) {
-                alert( "Request failed: " + textStatus );
+                console.log("Request failed: " + jqXHR + " --- " + textStatus);
             });
-
         } else return false;
     });
 
@@ -103,37 +99,30 @@ $(document).ready(() => {
 
         if (validatePhone(STATE.phone) && STATE.callbackTime !== undefined) {
             let data = Object.assign({}, STATE);
-
-            data.from = "Проверьте номер телефона.";
-
-            if (!STATE.callbackTime) {
-                data.callbackTime = "Удобное время для звонка не указано.";
-            }
+            data.from = 'Проверьте номер телефона';
+            data.id = '#checkPhone';
 
             if (IS_DEBUGGING) {
                 console.log('Данные, отправляемые на сервер:', data);
             }
 
             let request = $.ajax({
-                url: 'https://jsonplaceholder.typicode.com/todos/1', // !!!!!!!!!!!!!!! тестовый сервер
-                method: "GET", // !!!!!!!!!!!!!!! при реальном запросе поменять на POST
-                data: JSON.stringify(data),
-                dataType: "JSON"
+                method: 'post',
+                url: 'http://quiz24/send-post.php',
+                data: { json: JSON.stringify(data) },
+                dataType: 'json'
             });
 
             request.done(response => {
-
-                // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
-                console.log(response);
-
-                if (response)
+                if (IS_DEBUGGING) console.log(response);
+                if (!response.error) {
                     showThanksModal('#thanksCheckPhoneModal');
+                }
             });
 
             request.fail(function( jqXHR, textStatus ) {
-                alert( "Request failed: " + textStatus );
+                console.log("Request failed: " + jqXHR + " --- " + textStatus);
             });
-
         } else return false;
     });
 
@@ -141,36 +130,32 @@ $(document).ready(() => {
     $('#setPhoto form').submit(function (e) {
         e.preventDefault();
 
-        if (false) {
+        if (true) {
             let data = Object.assign({}, STATE);
-
-            data.from = "Отправьте фото комнаты и питомца.";
-            delete data.callbackTime;
+            data.from = 'Отправьте фото комнаты и питомца';
+            data.id = '#sendPhoto';
 
             if (IS_DEBUGGING) {
                 console.log('Данные, отправляемые на сервер:', data);
             }
 
             let request = $.ajax({
-                url: 'https://jsonplaceholder.typicode.com/todos/1', // !!!!!!!!!!!!!!! тестовый сервер
-                method: "GET", // !!!!!!!!!!!!!!! при реальном запросе поменять на POST
-                data: JSON.stringify(data),
-                dataType: "JSON"
+                method: 'post',
+                url: 'http://quiz24/send-post.php',
+                data: { json: JSON.stringify(data) },
+                dataType: 'json'
             });
 
             request.done(response => {
-
-                // !!!!!!!!!!!!!!! проверить переменную ответа на корректность отправки данных
-                console.log(response);
-
-                if (response)
+                if (IS_DEBUGGING) console.log(response);
+                if (!response.error) {
                     showThanksModal('#thanksSendPhotos');
+                }
             });
 
             request.fail(function( jqXHR, textStatus ) {
-                alert( "Request failed: " + textStatus );
+                console.log("Request failed: " + jqXHR + " --- " + textStatus);
             });
-
         } else return false;
     });
 

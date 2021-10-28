@@ -1,6 +1,14 @@
 import $ from "jquery";
 import IMask from 'imask';
 
+// Блокируем зум экрана на IOS
+document.addEventListener('touchmove', function(event) {
+    event = event.originalEvent || event;
+    if (event.scale !== 1) {
+        event.preventDefault();
+    }
+}, false);
+
 window.IS_DEBUGGING = true;
 
 window.validatePhone = phone => {

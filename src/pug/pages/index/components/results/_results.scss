@@ -658,7 +658,10 @@
 
         ul {
             position: relative;
-            left: 30px;
+
+            @media (min-width: $md) {
+                left: 20px;
+            }
 
             @media (min-width: $lg) {
                 left: 0;
