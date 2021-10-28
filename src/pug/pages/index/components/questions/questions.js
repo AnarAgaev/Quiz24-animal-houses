@@ -30,9 +30,6 @@ $(document).ready(function () {
                     // Даваляем данные в кнопку назад у следующего вопроса
                     pushDataToBackBtn(controller, data.id, data.pos - 1);
 
-                    // Сбрасываем классы хедера, чтобы не прыгал экран
-                    $('#header').removeClass('visible');
-
                     // С небольшой задержкой меняем вопросы
                     setTimeout(() => {
                         // Обновляем прогресс бар
@@ -130,7 +127,6 @@ $(document).ready(function () {
         setTimeout(
             () => {
                 $(el).addClass('hidden');
-                $('#header').addClass('blocked');
             },
             timeout
         );
@@ -173,10 +169,6 @@ $(document).ready(function () {
 
                 if (id === '#loader') {
                     moveProgressPercents();
-
-                    $('#header')
-                        .removeClass('fixed visible')
-                        .addClass('blocked');
                 }
             },
             timeout
@@ -187,7 +179,6 @@ $(document).ready(function () {
         setTimeout(
             () => {
                 $(id).addClass('active');
-                $('#header').removeClass('blocked');
             },
             timeout
         )
@@ -228,8 +219,6 @@ $(document).ready(function () {
         hideQuestion(loader, timeout);
         showQuestion('#getContact', timeout);
         activeQuestion('#getContact', timeout + 100);
-
-        setTimeout(() => $('#header').removeClass('blocked'), 1000);
 
         // Собираем слайдера с примерами домиков
         if (STATE['animal'][1] === 'Кошка') {

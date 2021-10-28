@@ -21,7 +21,6 @@ $(document).ready(() => {
         $('#modalHeader').removeClass('visible');
         $('#consultationModal').addClass('visible');
         $('body').addClass('modal-open');
-        $('#header').removeClass('visible');
 
         setTimeout(
             () =>  $('#consultationModalDialog')

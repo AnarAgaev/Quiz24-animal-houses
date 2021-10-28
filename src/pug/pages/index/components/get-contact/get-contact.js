@@ -43,10 +43,6 @@ $(document).ready(() => {
         $('#getContact').removeClass('active');
         $('#results').removeClass('hidden');
 
-        $('#header')
-            .removeClass('fixed visible')
-            .addClass('blocked');
-
         // Показываем секцию с результатми
         setTimeout(
             () => {
@@ -65,10 +61,5 @@ $(document).ready(() => {
             },
             200
         )
-
-        setTimeout(
-            () => $('#header').removeClass('blocked'),
-            1000
-        );
     }
 });
