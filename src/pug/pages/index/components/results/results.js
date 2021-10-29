@@ -87,14 +87,14 @@ $(document).ready(() => {
 
             let request = $.ajax({
                 method: 'post',
-                url: 'https://quiz24.ru/portfolio/houses_for_pets/send-post.php',
+                url: 'https://u1430355.isp.regruhosting.ru/temp/send-post.php',
                 data: { json: JSON.stringify(data) },
                 dataType: 'json'
             });
 
             request.done(response => {
                 if (IS_DEBUGGING) console.log(response);
-                if (!response.error) {
+                if (response.error) {
                     showThanksModal('#thanksPresentModal');
                     $(submitBtn).addClass('btn_inactive');
                 }
@@ -126,14 +126,14 @@ $(document).ready(() => {
 
             let request = $.ajax({
                 method: 'post',
-                url: 'https://quiz24.ru/portfolio/houses_for_pets/send-post.php',
+                url: 'https://u1430355.isp.regruhosting.ru/temp/send-post.php',
                 data: { json: JSON.stringify(data) },
                 dataType: 'json'
             });
 
             request.done(response => {
                 if (IS_DEBUGGING) console.log(response);
-                if (!response.error) {
+                if (response.error) {
                     showThanksModal('#thanksCheckPhoneModal');
                 }
             });
@@ -156,35 +156,35 @@ $(document).ready(() => {
             showLoading(from);
 
             let data = Object.assign({}, STATE);
-            data.from = 'Отправьте фото комнаты и питомца';
-            data.id = '#sendPhoto';
+                data.from = 'Отправьте фото комнаты и питомца';
+                data.id = '#sendPhoto';
+
+             let form = document.getElementById('formSetPhoto'),
+                formData = new FormData(form);
+                formData.append('json', JSON.stringify(data));
 
             if (IS_DEBUGGING) {
-                console.log('Данные, отправляемые на сервер:', data);
+                console.log('Данные, отправляемые на сервер:', formData);
             }
 
             let request = $.ajax({
                 method: 'post',
-                url: 'https://quiz24.ru/portfolio/houses_for_pets/send-post.php',
-                data: { json: JSON.stringify(data) },
+                url: 'https://u1430355.isp.regruhosting.ru/temp/send-post.php',
+                contentType: false,
+                processData: false,
+                // data: { json: JSON.stringify(data) },
+                data: formData,
                 dataType: 'json'
             });
 
             request.done(response => {
                 if (IS_DEBUGGING) console.log(response);
-                if (!response.error) {
-
-                    // setTimeout для теста, на бою урабть
-                    setTimeout(() =>
-                        $(from)
-                            .removeClass('prefinish')
-                            .addClass('loaded'),
-                        3000
+                if (response.error) {
+                    $(from).removeClass('prefinish').addClass('loaded');
+                    setTimeout(
+                        () => showThanksModal('#thanksSendPhotos'),
+                        2000
                     );
-
-
-
-                    setTimeout(() => showThanksModal('#thanksSendPhotos'), 5000);
                 }
             });
 

@@ -23,14 +23,14 @@ $(document).ready(() => {
 
                 let request = $.ajax({
                     method: 'post',
-                    url: 'https://quiz24.ru/portfolio/houses_for_pets/send-post.php',
+                    url: 'https://u1430355.isp.regruhosting.ru/temp/send-post.php',
                     data: { json: JSON.stringify(data) },
                     dataType: 'json'
                 });
 
                 request.done(response => {
                     if (IS_DEBUGGING) console.log(response);
-                    if (!response.error) changeSlide();
+                    if (response.error) changeSlide();
                 });
 
                 request.fail(function( jqXHR, textStatus ) {
