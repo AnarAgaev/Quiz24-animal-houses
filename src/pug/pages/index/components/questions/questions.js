@@ -179,6 +179,8 @@ $(document).ready(function () {
         setTimeout(
             () => {
                 $(id).addClass('active');
+
+                scrollToProgressBar();
             },
             timeout
         )
@@ -285,6 +287,16 @@ $(document).ready(function () {
 
             if (last) setTimeout(() => SLIDER_RESULT.update(), 100);
         }
+    }
+
+    function scrollToProgressBar() {
+        let top = $('#progressBar').offset().top,
+            offset = $(window).width() < 768 ? 30 : 60;
+
+        $('body,html').animate(
+            { scrollTop: top - offset},
+            900
+        );
     }
 
     // Галерея стилей интерьера

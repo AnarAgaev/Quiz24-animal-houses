@@ -298,4 +298,8 @@ input[type="password"]::-ms-reveal {
         opacity: 1;
         transform: translateY(0);
     }
+
+    @media (min-width: $lg) {
+        padding-bottom: 0 !important;
+    }
 }

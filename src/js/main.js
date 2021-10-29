@@ -108,35 +108,50 @@ window.checkForms = (el) => {
 
     function checkFormSinglePhone() {
         let submits = $('form[data-form-type="singlePhone"] [type="submit"]'),
+            submitsCallbackTime = $('form[data-form-type="callbackTime"] [type="submit"]'),
+            submitsSetPhoto = $('form[data-form-type="setPhoto"] [type="submit"]'),
             phoneIsValid = validatePhone(STATE.phone);
 
         if (phoneIsValid) {
             submits.removeClass('btn_inactive');
+            submitsCallbackTime.removeClass('btn_inactive');
+            submitsSetPhoto.removeClass('btn_inactive');
         } else {
             submits.addClass('btn_inactive');
+            submitsCallbackTime.addClass('btn_inactive');
+            submitsSetPhoto.addClass('btn_inactive');
         }
     }
 
     function checkFormCallbackTime() {
         let submits = $('form[data-form-type="callbackTime"] [type="submit"]'),
+            submitsConnectType = $('form[data-form-type="connectType"] [type="submit"]'),
+            submitsSetPhoto = $('form[data-form-type="setPhoto"] [type="submit"]'),
             phoneIsValid = validatePhone(STATE.phone),
             connectIsValid = STATE.callbackTime !== '';
 
         if (phoneIsValid) {
             submits.removeClass('btn_inactive');
+            submitsConnectType.removeClass('btn_inactive');
+            submitsSetPhoto.removeClass('btn_inactive');
         } else {
             submits.addClass('btn_inactive');
+            submitsConnectType.addClass('btn_inactive');
+            submitsSetPhoto.addClass('btn_inactive');
         }
     }
 
     function checkFormSetPhoto() {
         let submits = $('form[data-form-type="setPhoto"] [type="submit"]'),
+            submitsCallbackTime = $('form[data-form-type="callbackTime"] [type="submit"]'),
             phoneIsValid = validatePhone(STATE.phone);
 
         if (phoneIsValid) {
             submits.removeClass('btn_inactive');
+            submitsCallbackTime.removeClass('btn_inactive');
         } else {
             submits.addClass('btn_inactive');
+            submitsCallbackTime.addClass('btn_inactive');
         }
 
         // setTimeout(() => {

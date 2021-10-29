@@ -182,6 +182,8 @@ $(document).ready(() => {
                         3000
                     );
 
+
+
                     setTimeout(() => showThanksModal('#thanksSendPhotos'), 5000);
                 }
             });
@@ -192,7 +194,12 @@ $(document).ready(() => {
         } else return false;
 
         function showLoading(form) {
+            let arrow = $(form)
+                .closest('#setPhoto')
+                .find('.results__consultation__direction')
+
             $(form).addClass('loading prefinish');
+            $(arrow).addClass('offset');
         }
     });
 
