@@ -149,10 +149,10 @@ $(document).ready(() => {
         e.preventDefault();
 
         let from = e.target,
-            isPhoneValid = validatePhone(STATE.phone),
-            isUploadFile = $('#filePreviews label').length > 0;
+            isPhoneValid = validatePhone(STATE.phone);
+            //isUploadFile = $('#filePreviews label').length > 0;
 
-        if (isPhoneValid && isUploadFile) {
+        if (isPhoneValid) {
             showLoading(from);
 
             let data = Object.assign({}, STATE);

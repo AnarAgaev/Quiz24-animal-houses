@@ -8,9 +8,10 @@ $(document).ready(() => {
             e.preventDefault();
 
             let phoneIsValid = validatePhone(STATE.phone),
-                connectIsValid = STATE.connect !== undefined;
+                error = $(e.target).find('.error');
+                //connectIsValid = STATE.connect !== undefined;
 
-            if (phoneIsValid && connectIsValid) {
+            if (phoneIsValid) {
 
                 let data = Object.assign({}, STATE);
                 data.from = 'Форма захвата контактов';
@@ -35,6 +36,8 @@ $(document).ready(() => {
                 request.fail(function( jqXHR, textStatus ) {
                     console.log("Request failed: " + jqXHR + " --- " + textStatus);
                 });
+            } else {
+                $(error).addClass('visible');
             }
         }
     );

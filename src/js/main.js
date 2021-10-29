@@ -17,7 +17,9 @@ window.validatePhone = phone => {
 };
 
 // В суперглобальной переменной храним все дынные, введенные пользователем
-window.STATE = {};
+window.STATE = {
+    connect: "WhatsApp",
+};
 
 // С помощью проксирования слушаем изменение стэйта
 STATE = new Proxy(STATE, {
@@ -89,15 +91,18 @@ window.checkForms = (el) => {
     function checkFormConnectType() {
         let submitsConnectType = $('form[data-form-type="connectType"] [type="submit"]'),
             submitsCallbackTime = $('form[data-form-type="callbackTime"] [type="submit"]'),
+            submitsSetPhoto = $('form[data-form-type="setPhoto"] [type="submit"]'),
             phoneIsValid = validatePhone(STATE.phone),
             connectIsValid = STATE.connect !== undefined;
 
         if (phoneIsValid && connectIsValid) {
             submitsConnectType.removeClass('btn_inactive');
             submitsCallbackTime.removeClass('btn_inactive');
+            submitsSetPhoto.removeClass('btn_inactive');
         } else {
             submitsConnectType.addClass('btn_inactive');
             submitsCallbackTime.addClass('btn_inactive');
+            submitsSetPhoto.addClass('btn_inactive');
         }
     }
 
@@ -128,15 +133,21 @@ window.checkForms = (el) => {
         let submits = $('form[data-form-type="setPhoto"] [type="submit"]'),
             phoneIsValid = validatePhone(STATE.phone);
 
-        setTimeout(() => {
-            let photosIsValid = $('#filePreviews label').length > 0;
+        if (phoneIsValid) {
+            submits.removeClass('btn_inactive');
+        } else {
+            submits.addClass('btn_inactive');
+        }
 
-            if (phoneIsValid && photosIsValid) {
-                submits.removeClass('btn_inactive');
-            } else {
-                submits.addClass('btn_inactive');
-            }
-        }, 300);
+        // setTimeout(() => {
+        //     let photosIsValid = $('#filePreviews label').length > 0;
+        //
+        //     if (phoneIsValid && photosIsValid) {
+        //         submits.removeClass('btn_inactive');
+        //     } else {
+        //         submits.addClass('btn_inactive');
+        //     }
+        // }, 300);
     }
 }
 
@@ -216,6 +227,9 @@ $(document).ready(() => {
                 STATE['phone'] = PHONE_MASKS[maskNum].unmaskedValue;
                 checkForms(this);
                 checkPhoneController();
+
+                // При изменении телефона чистим все ошибки
+                $('.error').removeClass('visible');
             }
         );
 });
