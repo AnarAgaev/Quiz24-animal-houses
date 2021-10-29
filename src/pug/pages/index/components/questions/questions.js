@@ -283,7 +283,7 @@ $(document).ready(function () {
             slide.append(wrap);
             node.append(slide);
 
-            if (last) SLIDER_RESULT.update();
+            if (last) setTimeout(() => SLIDER_RESULT.update(), 100);
         }
     }
 

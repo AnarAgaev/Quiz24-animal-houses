@@ -455,6 +455,7 @@
                     height: 80px;
                     border-radius: 50%;
                     margin-right: 20px;
+                    transition: all .3s linear;
                 }
 
                 span {
@@ -462,6 +463,12 @@
                     position: relative;
                     font-size: 14px;
                     line-height: 17px;
+                    transition: all .3s linear;
+                    max-width: 200px;
+                    max-height: 100px;
+                    overflow: hidden;
+                    height: auto;
+                    opacity: 1;
                 }
             }
 
@@ -470,6 +477,9 @@
                 position: relative;
                 margin-bottom: 10px;
                 width: 224px;
+                opacity: 1;
+                max-height: 70px;
+                transition: all .3s linear;
 
                 @media (min-width: $md) {
                     margin-bottom: 15px;
@@ -486,14 +496,17 @@
                 display: flex;
                 justify-content: space-between;
                 position: relative;
-                margin-bottom: 15px;
                 width: 224px;
+
+                opacity: 1;
+                max-height: 300px;
+                transition: all .3s linear;
 
                 @media (min-width: $md) {
                     margin-bottom: 20px;
                 }
 
-                button {
+                #addFile {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -506,6 +519,7 @@
                     font-size: 11px;
                     line-height: 125%;
                     color: #828282;
+                    cursor: pointer;
 
                     img {
                         display: block;
@@ -517,14 +531,152 @@
                 .show-camera {
                     margin-right: 4px;
                 }
+            }
 
-                //.add-photo {
-                //    margin-left: 4px;
-                //}
+            .file-previews {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 100%;
+                margin-left: 5px;
+                padding-top: 10px;
+                padding-bottom: 5px;
+                opacity: 1;
+                max-height: 300px;
+                transition: all .3s linear;
 
-                &__preview {
+                label {
+                    display: block;
+                    position: relative;
+                    width: 35px;
+                    height: 45px;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+                    background-color: #e0e0e0;
+                    background-position: center;
+                    background-repeat: no-repeat;
 
+                    .delete-file {
+                        position: absolute;
+                        width: 100%;
+                        height: 50%;
+                        top: 0;
+                        left: 0;
+
+                        &::before {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            top: 2px;
+                            right: 2px;
+                            width: 9px;
+                            height: 9px;
+                            border: 0.7px solid $color-back;
+                            border-radius: 50%;
+                            background: url("/img/icon-delete.svg") center no-repeat;
+                        }
+                    }
                 }
+            }
+
+            #button {
+                opacity: 1;
+                max-height: 70px;
+                transition: all .3s linear;
+            }
+
+            &.loading {
+                .header {
+                    img {
+                        margin-right: 0;
+                    }
+
+                    span {
+                        max-height: 0;
+                        max-width: 0;
+                        opacity: 0;
+                    }
+                }
+
+                label,
+                button,
+                .actions,
+                .file-previews {
+                    opacity: 0;
+                    max-height: 0;
+                    padding: 0;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+            }
+
+            &.prefinish {
+                .form-loader {
+                    opacity: 1;
+                    max-height: 150px;
+                }
+            }
+
+            &.loaded {
+                .finish {
+                    opacity: 1;
+                    max-height: 50px;
+                }
+            }
+
+            .form-loader {
+                opacity: 0;
+                height: auto;
+                max-height: 0;
+                overflow: hidden;
+                transition: all .3s linear;
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+
+                h5 {
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 17px;
+                    text-align: center;
+                }
+
+                .spinner {
+                    display: block;
+                    width: 100%;
+                    height: 40px;
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                    background: url("/img/spinner.svg") center no-repeat;
+                }
+
+                .txt {
+                    display: block;
+                    width: 100%;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 15px;
+                    text-align: center;
+                }
+            }
+
+            .finish {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 17px;
+                text-align: center;
+                opacity: 0;
+                height: auto;
+                max-height: 0;
+                overflow: hidden;
+                transition: all .3s linear;
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+
             }
 
             [type="submit"] {

@@ -37,3 +37,18 @@ html(lang="ru")
             block content
         footer.footer
            include footer/footer
+
+        //- Preload sliders images
+        .preload-sliders-images.unvisible
+            each val in [1, 2, 3, 4, 5, 6, 7, 8]
+                img(src="/img/slider/product/pic" + val + ".jpg" alt="")
+            each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+                img(src="/img/slider/cat-single/pic" + val + ".jpg" alt="")
+            each val in [1, 2, 3, 4, 5, 6, 7]
+                img(src="/img/slider/cat-more/pic" + val + ".jpg" alt="")
+            each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                img(src="/img/slider/dog-small/pic" + val + ".jpg" alt="")
+            each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                img(src="/img/slider/dog-medium/pic" + val + ".jpg" alt="")
+            each val in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                img(src="/img/slider/dog-small/pic" + val + ".jpg" alt="")

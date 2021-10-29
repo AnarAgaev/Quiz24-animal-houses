@@ -184,7 +184,7 @@ input[type="password"]::-ms-reveal {
     }
 
     &_inactive {
-        background-color: $color-accent;
+        background-color: rgba(198, 181, 92, 0.6);
     }
 }
 
@@ -273,4 +273,5 @@ input[type="password"]::-ms-reveal {
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+    z-index: -1;
 }

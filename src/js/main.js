@@ -69,6 +69,97 @@ const phoneMaskOptions = {
     placeholderChar: '_'
 };
 
+window.checkForms = (el) => {
+
+    let formType = $(el)
+        .closest('form')
+        .data('formType');
+
+    switch(formType) {
+        case 'connectType': checkFormConnectType();
+            break;
+        case 'singlePhone': checkFormSinglePhone();
+            break;
+        case 'callbackTime': checkFormCallbackTime();
+            break;
+        case 'setPhoto': checkFormSetPhoto();
+            break;
+    }
+
+    function checkFormConnectType() {
+        let submitsConnectType = $('form[data-form-type="connectType"] [type="submit"]'),
+            submitsCallbackTime = $('form[data-form-type="callbackTime"] [type="submit"]'),
+            phoneIsValid = validatePhone(STATE.phone),
+            connectIsValid = STATE.connect !== undefined;
+
+        if (phoneIsValid && connectIsValid) {
+            submitsConnectType.removeClass('btn_inactive');
+            submitsCallbackTime.removeClass('btn_inactive');
+        } else {
+            submitsConnectType.addClass('btn_inactive');
+            submitsCallbackTime.addClass('btn_inactive');
+        }
+    }
+
+    function checkFormSinglePhone() {
+        let submits = $('form[data-form-type="singlePhone"] [type="submit"]'),
+            phoneIsValid = validatePhone(STATE.phone);
+
+        if (phoneIsValid) {
+            submits.removeClass('btn_inactive');
+        } else {
+            submits.addClass('btn_inactive');
+        }
+    }
+
+    function checkFormCallbackTime() {
+        let submits = $('form[data-form-type="callbackTime"] [type="submit"]'),
+            phoneIsValid = validatePhone(STATE.phone),
+            connectIsValid = STATE.callbackTime !== '';
+
+        if (phoneIsValid) {
+            submits.removeClass('btn_inactive');
+        } else {
+            submits.addClass('btn_inactive');
+        }
+    }
+
+    function checkFormSetPhoto() {
+        let submits = $('form[data-form-type="setPhoto"] [type="submit"]'),
+            phoneIsValid = validatePhone(STATE.phone);
+
+        setTimeout(() => {
+            let photosIsValid = $('#filePreviews label').length > 0;
+
+            if (phoneIsValid && photosIsValid) {
+                submits.removeClass('btn_inactive');
+            } else {
+                submits.addClass('btn_inactive');
+            }
+        }, 300);
+    }
+}
+
+window.checkPhoneController = () => {
+    let ctrls = $('[name="phone"]');
+
+    if (validatePhone(STATE['phone'])) {
+        $(ctrls).addClass('valid');
+    } else {
+        $(ctrls).removeClass('valid');
+    }
+}
+
+window.checkCallbackTimeController = () => {
+    let ctrls = $('[name="time"]');
+
+    if (STATE.callbackTime) {
+        $(ctrls).addClass('valid');
+    } else {
+        $(ctrls).removeClass('valid');
+    }
+}
+
 $(document).ready(() => {
     // Слушаем редактирование на всех контроллерах с Удобным временем для звонка
     $('.callback-time-controller')
@@ -127,91 +218,4 @@ $(document).ready(() => {
                 checkPhoneController();
             }
         );
-
-    function checkForms(el) {
-        let formType = $(el)
-            .closest('form')
-            .data('formType');
-
-        switch(formType) {
-            case 'connectType': checkFormConnectType();
-                break;
-            case 'singlePhone': checkFormSinglePhone();
-                break;
-            case 'callbackTime': checkFormCallbackTime();
-                break;
-            case 'setPhoto': checkFormSetPhoto();
-                break;
-        }
-
-        function checkFormConnectType() {
-            let submitsConnectType = $('form[data-form-type="connectType"] [type="submit"]'),
-                submitsCallbackTime = $('form[data-form-type="callbackTime"] [type="submit"]'),
-                phoneIsValid = validatePhone(STATE.phone),
-                connectIsValid = STATE.connect !== undefined;
-
-            if (phoneIsValid && connectIsValid) {
-                submitsConnectType.removeClass('btn_inactive');
-                submitsCallbackTime.removeClass('btn_inactive');
-            } else {
-                submitsConnectType.addClass('btn_inactive');
-                submitsCallbackTime.addClass('btn_inactive');
-            }
-        }
-
-        function checkFormSinglePhone() {
-            let submits = $('form[data-form-type="singlePhone"] [type="submit"]'),
-                phoneIsValid = validatePhone(STATE.phone);
-
-            if (phoneIsValid) {
-                submits.removeClass('btn_inactive');
-            } else {
-                submits.addClass('btn_inactive');
-            }
-        }
-
-        function checkFormCallbackTime() {
-            let submits = $('form[data-form-type="callbackTime"] [type="submit"]'),
-                phoneIsValid = validatePhone(STATE.phone),
-                connectIsValid = STATE.callbackTime !== '';
-
-            if (phoneIsValid) {
-                submits.removeClass('btn_inactive');
-            } else {
-                submits.addClass('btn_inactive');
-            }
-        }
-
-        function checkFormSetPhoto() {
-            let submits = $('form[data-form-type="setPhoto"] [type="submit"]'),
-                phoneIsValid = validatePhone(STATE.phone),
-                photosIsValid = false;
-
-            if (phoneIsValid && photosIsValid) {
-                submits.removeClass('btn_inactive');
-            } else {
-                submits.addClass('btn_inactive');
-            }
-        }
-    }
-
-    function checkPhoneController() {
-        let ctrls = $('[name="phone"]');
-
-        if (validatePhone(STATE['phone'])) {
-            $(ctrls).addClass('valid');
-        } else {
-            $(ctrls).removeClass('valid');
-        }
-    }
-
-    function checkCallbackTimeController() {
-        let ctrls = $('[name="time"]');
-
-        if (STATE.callbackTime) {
-            $(ctrls).addClass('valid');
-        } else {
-            $(ctrls).removeClass('valid');
-        }
-    }
 });

@@ -1,5 +1,5 @@
 //- active hidden
-.results.hidden#results
+.results.active#results
     .results__banner
         .container
             span.pic
@@ -48,7 +48,6 @@
                 | и вашего питомца
 
     span.results__slider-war свайпай
-
     //- Fancy box galleries
     #cat-single.unvisible
         each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
@@ -92,14 +91,26 @@
                         class="phone-controller"
                         placeholder="Введите номер телефона")
                 .actions
-                    //- button.show-camera
-                    //-     img(src="/img/icon-camera.svg" alt="")
-                    //-     span Камера
-                    button.add-photo
+                    #addFile
                         img(src="/img/icon-picture.svg" alt="")
                         span Добавить фото/видео
-                    .actions__preview
-                button.btn.btn_inactive(type="submit") ОТПРАВИТЬ ФОТО
+                .file-previews#filePreviews
+
+                button.btn.btn_inactive(type="submit") отправить фото
+
+                .form-loader
+                    h5
+                        | Ваши фото отправляются
+                        br
+                        | дизайнеру - кинологу
+                    span.spinner
+                    span.txt Это быстро
+
+                .finish
+                    | Отлично!
+                    br
+                    | Фото отправлены
+
 
     .results__production
         .container
